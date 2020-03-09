@@ -1,11 +1,21 @@
-import React from "react";
+import React from 'react';
+import Login from '../../components/LoginForm/Login';
+import Register from '../../components/RegisterForm/Register';
 import './Landing.css';
+const Landing = () => {
+  const [activateLoginForm, setActivateLoginForm] = React.useState(0);
+  const [activateRegisterForm, setActivateRegisterForm] = React.useState(0);
+  const loginClickHandler = () => {
+    console.log(2)
+    activateLoginForm === 0 ? setActivateLoginForm(1) : setActivateLoginForm(0);
+  };
+  const registerClickHandler = () => {
+    activateRegisterForm === 0 ? setActivateRegisterForm(1) : setActivateRegisterForm(0);
+  };
 
-let Landing = () => {
-
-    return (
-
-            <div className='all'>
+  return (
+    <div>
+        <div className='all'>
             <div className='img'>
                 <a ><img src="./img/wedding.png" ></img>
                 </a>
@@ -29,7 +39,23 @@ let Landing = () => {
             <a  href="/Budget" ><img src="./img/cost.png"></img>
             <h3>تكاليف</h3></a></div>
         </div>
-    );
-};
 
+      <h1>This will be the landing page: </h1>
+      <button className="signInButton" onClick={loginClickHandler}>
+        Sign In
+      </button>
+      <Login 
+        activateLoginForm={activateLoginForm} 
+        setActivateLoginForm={setActivateLoginForm} 
+      />
+      <button className="registerButton" onClick={registerClickHandler}>
+        Register
+      </button>
+      <Register 
+        activateRegisterForm={activateRegisterForm} 
+        setActivateRegisterForm={setActivateRegisterForm} 
+      />
+    </div>
+  );
+};  
 export default Landing;
