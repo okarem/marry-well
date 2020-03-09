@@ -1,20 +1,19 @@
 import React from 'react';
 import './Login.css';
 
-const Login = ({ activateForm, setActivateForm }) => {
+const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   const clickHandler = () => {
-    setActivateForm(0);
+     setActivateLoginForm(0);
   };
 
-  React.useEffect(() => {
-    activateForm === 0
-      ? (document.querySelector('.popUpVisible').className = 'popUpHidden')
-      : (document.querySelector('.popUpHidden').className = 'popUpVisible');
-  }, [activateForm]);
+  let popupClass
+
+  activateLoginForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisible';
+
 
   return (
-    <section className="popUpHidden popUpVisible">
-      <form className="loginForm" action="/auth" method="PSOT">
+    <section className={popupClass}>
+      <form className="loginForm" action="/auth" method="POST">
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>
