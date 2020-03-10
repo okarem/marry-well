@@ -12,17 +12,17 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
 
   return (
     <section className={popupClass}>
-      <form className="userForm" action="/auth" method="POST">
+      <form className="userForm" action="http://localhost:5000/authenticate" method="POST">
         <div className="userName">
           <label>User Name</label>
-          <input type="text"></input>
+          <input type="text" name="username"></input>
         </div>
         <div className="password">
           <label>Password</label>
-          <input type="password"></input>
+          <input type="password" name="password"></input>
         </div>
         <div className="LogIn">
-          <input type="button" value="LogIn" />
+          <input type="submit" value="LogIn" />
         </div>
         <div className="closeForm" onClick={clickHandler}>
           <img src="./img/close.png" alt="closeIcon" />
