@@ -1,6 +1,5 @@
 .popUpVisible {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.85);
   text-align: center;
   width: 100%;
   height: 100vh;
@@ -9,7 +8,6 @@
   top: 0;
   transition: opacity 0.8s;
 }
-
 .popUpHidden {
   position: absolute;
   top: -100%;
@@ -20,8 +18,8 @@
   background-color: #e2dad8;
   margin: 15vh auto;
   font-size: 22px;
-  width: 35%;
-  height: 60vh;
+  width: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -29,7 +27,6 @@
   position: relative;
   border-radius: 15px;
 }
-
 .userName,
 .password {
   display: flex;
@@ -46,9 +43,12 @@
   width: 30px;
   height: 30px;
 }
-
 .closeForm img {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+.img-logIn img {
+  width: 70px;
+  height: 70px;
 }

@@ -20,6 +20,10 @@
   font-size: 20px;
   padding: 50px;
 }
+h3 {
+  text-align: center;
+  margin-top: 0.5px;
+}
 
 .categoriesContainer {
   list-style: none;

@@ -21,8 +21,8 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
           <label>Password</label>
           <input type="password"></input>
         </div>
-        <div className="signIn">
-          <input type="button" value="Sign In" />
+        <div className="LogIn">
+          <input type="button" value="LogIn" />
         </div>
         <div className="closeForm" onClick={clickHandler}>
           <img src="./img/close.png" alt="closeIcon" />
