@@ -13,6 +13,10 @@ activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisi
     return (
 <section className={popupClass}>
       <form className="loginForm" action="/auth" method="POST">
+      <div className="img-logIn">
+        <a><img src="./img/iconLogIn.png" ></img>
+          <h3>sign up <br></br>for afree account </h3></a>
+        </div>
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>
@@ -35,6 +39,4 @@ activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisi
     </section>
   );
 };
-
-
 export default Register;

@@ -14,6 +14,10 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   return (
     <section className={popupClass}>
       <form className="loginForm" action="/auth" method="POST">
+        <div className="img-logIn">
+        <a><img src="./img/iconLogIn.png" ></img>
+         <h2>Log In</h2></a>
+        </div>
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>
@@ -22,8 +26,8 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
           <label>Password</label>
           <input type="password"></input>
         </div>
-        <div className="signIn">
-          <input type="button" value="Sign In" />
+        <div className="LogIn">
+          <input type="button" value="LogIn" />
         </div>
         <div className="closeForm" onClick={clickHandler}>
           <img src="./img/close.png" alt="closeIcon" />

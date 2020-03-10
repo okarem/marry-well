@@ -15,18 +15,33 @@ const Landing = () => {
 
   return (
     <div>
+
         <div className='all'>
             <div className='img'>
-                <a ><img src="./img/wedding.png" ></img>
+                <a><img src="./img/wedding.png" ></img>
                 </a>
             </div>
+      <button className="logInButton" onClick={loginClickHandler}>
+        Log In
+      </button>
+      <Login 
+        activateLoginForm={activateLoginForm} 
+        setActivateLoginForm={setActivateLoginForm} 
+      />
+      <button className="registerButton" onClick={registerClickHandler}>
+        Register
+      </button>
+      <Register 
+        activateRegisterForm={activateRegisterForm} 
+        setActivateRegisterForm={setActivateRegisterForm} 
+      />
             <div className='description'>
                 <h2> يقضي الكثير من الناس وقتا في التخطيط لحفلات الزفاف ، أكثر من الوقت الذي يقضونه في التخطيط للزواج. - زيغ زيغلر  </h2> 
                
             </div>
             
             <div className='categories'>
-            <a  href=""><img src="./img/calendar.png"></img>
+            <a  href="calendar"><img src="./img/calendar.png"></img>
             <h3>جدول المواعيد</h3></a>
             </div>
             <div className='categories'>
@@ -40,21 +55,7 @@ const Landing = () => {
             <h3>تكاليف</h3></a></div>
         </div>
 
-      <h1>This will be the landing page: </h1>
-      <button className="signInButton" onClick={loginClickHandler}>
-        Sign In
-      </button>
-      <Login 
-        activateLoginForm={activateLoginForm} 
-        setActivateLoginForm={setActivateLoginForm} 
-      />
-      <button className="registerButton" onClick={registerClickHandler}>
-        Register
-      </button>
-      <Register 
-        activateRegisterForm={activateRegisterForm} 
-        setActivateRegisterForm={setActivateRegisterForm} 
-      />
+      
     </div>
   );
 };  
