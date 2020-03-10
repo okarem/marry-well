@@ -1,23 +1,18 @@
 import React from 'react';
-import './Login.css';
+import './Forms.css';
 
 const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   const clickHandler = () => {
-     setActivateLoginForm(0);
+    setActivateLoginForm(0);
+    document.body.style.overflow = 'visible';
   };
 
-  let popupClass
-
-  activateLoginForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisible';
-
+  let popupClass;
+  activateLoginForm === 0 ? (popupClass = 'popUpHidden') : (popupClass = 'popUpVisible');
 
   return (
     <section className={popupClass}>
-      <form className="loginForm" action="/auth" method="POST">
-        <div className="img-logIn">
-        <a><img src="./img/iconLogIn.png" ></img>
-         <h2>Log In</h2></a>
-        </div>
+      <form className="userForm" action="/auth" method="POST">
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>

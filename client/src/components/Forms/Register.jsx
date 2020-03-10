@@ -1,22 +1,17 @@
-import React from "react";
-import "../LoginForm/Login.css";
+import React from 'react';
+import './Forms.css';
 
-const Register =({activateRegisterForm, setActivateRegisterForm})=>{
-
-  const registerHandler  = () => {        
+const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
+  const registerHandler = () => {
     setActivateRegisterForm(0);
+    document.body.style.overflow = 'visible';
   };
 
-
-let popupClass
-activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisible'
-    return (
-<section className={popupClass}>
-      <form className="loginForm" action="/auth" method="POST">
-      <div className="img-logIn">
-        <a><img src="./img/iconLogIn.png" ></img>
-          <h3>sign up <br></br>for afree account </h3></a>
-        </div>
+  let popupClass;
+  activateRegisterForm === 0 ? (popupClass = 'popUpHidden') : (popupClass = 'popUpVisible');
+  return (
+    <section className={popupClass}>
+      <form className="userForm" action="/auth" method="POST">
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>
@@ -39,4 +34,5 @@ activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisi
     </section>
   );
 };
+
 export default Register;
