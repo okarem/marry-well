@@ -19,13 +19,13 @@ exports.addUser = (req, res) => {
       .hash(password, 10)
       .then(hash => {
         createUser(userName,hash)
-        .then(message=>{console.log(message)})
-        .catch(errMessage=>{console.log(errMessage)});
+        .then(() => res.redirect("http://localhost:3000/Budget"))
+        .catch(() => res.redirect("http://localhost:3000/Error"));
+      
       })
-      .catch(err => console.log(err));
+      .catch(() => res.redirect("http://localhost:3000/Error"));
   }else{
-      res.send("password and confirmed password are not equal");
+      res.redirect("http://localhost:3000/Error");
      
   }
-  res.redirect("http://localhost:3000/");
 };
