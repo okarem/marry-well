@@ -22,11 +22,11 @@ const Landing = () => {
         </a>
 
         <button className="signInButton" onClick={loginClickHandler}>
-          Sign In
+          الدخول
         </button>
 
         <button className="registerButton" onClick={registerClickHandler}>
-          Register
+          تسجيل الدخول
         </button>
       </header>
 
