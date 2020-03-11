@@ -23,16 +23,16 @@ function App() {
             <Landing />
           </Route>
           <Route exact path="/Guests">
-            <Guests/>
+            <Guests />
           </Route>
           <Route exact path="/Calender">
-            <Calender/>
+            <Calender />
           </Route>
           <Route path="/Budget">
-            <Budget/>
+            <Budget />
           </Route>
           <Route path="/Stuff">
-            <Stuff/>
+            <Stuff />
           </Route>
         </Switch>
       </div>
