@@ -1,70 +1,65 @@
-import React from "react";
-import "./Forms.css";
+import React from 'react';
+import './Forms.css';
 
-const Register =({activateRegisterForm, setActivateRegisterForm})=>{
+const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
+  const [password, setPassword] = React.useState(null);
+  const [ConfirmedPassword, setConfirmedPassword] = React.useState(null);
+  const [userName, setUserName] = React.useState(null);
 
+  const passwordListener = e => {
+    setPassword(e.target.value);
+  };
 
-  const [password, setPassword]= React.useState(null);
-  const [ConfirmedPassword, setConfirmedPassword]= React.useState(null);
-  const [userName,setUserName] = React.useState(null);
+  const confPassListener = e => {
+    setConfirmedPassword(e.target.value);
+  };
 
-const passwordListener = e =>{
-  setPassword(e.target.value);
-}
-
-const confPassListener = e =>{
-  setConfirmedPassword(e.target.value);
-}
-
-
-const userNameListener = e =>{
-  setUserName(e.target.value);
-}
+  const userNameListener = e => {
+    setUserName(e.target.value);
+  };
 
   const confirm = event => {
-    if(!password){
+    if (!password) {
       event.preventDefault();
-      alert("password is empty");
+      alert('password is empty');
       return;
     }
-    if(!ConfirmedPassword){
+    if (!ConfirmedPassword) {
       event.preventDefault();
-      alert("confirmed password is empty");
+      alert('confirmed password is empty');
       return;
     }
-    if(!userName){
+    if (!userName) {
       event.preventDefault();
-      alert("user name is empty");
+      alert('user name is empty');
       return;
     }
-    if(password !== ConfirmedPassword){
+    if (password !== ConfirmedPassword) {
       event.preventDefault();
-      alert("confirmed password does not match the password");
+      alert('confirmed password does not match the password');
     }
+  };
 
-  }
-
-  const registerHandler  = () => {        
+  const registerHandler = () => {
     setActivateRegisterForm(0);
   };
 
-
-let popupClass
-activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisible'
-    return (
-<form className={popupClass}>
+  let popupClass;
+  activateRegisterForm === 0 ? (popupClass = 'popUpHidden') : (popupClass = 'popUpVisible');
+  return (
+    <form className={popupClass}>
       <form className="userForm" action="http://localhost:4000/createUser" method="POST" onSubmit={confirm}>
         <div className="userName">
           <label>اسم المستخدم</label>
-          <input type="text" name='username' onChange={userNameListener}></input>
+          <input type="text" name="username" onChange={userNameListener}></input>
         </div>
         <div className="password">
           <label>كلمة المرور</label>
-          <input type="password" name='password' onChange={passwordListener}></input>
+          <input type="password" name="password" onChange={passwordListener}></input>
         </div>
         <div className="confirmedPassword">
           <label> أدخل كلمة المرور مجدداً</label>
-          <input type="password" name='confirmedPassword' onChange={confPassListener}></input>
+          <input type="password" name="confirmedPassword" onChange={confPassListener}></input>
         </div>
         <div className="Register">
           <input type="submit" value="تسجيل الدخول" />
@@ -73,9 +68,8 @@ activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisi
           <img src="./img/close.png" alt="closeIcon" />
         </div>
       </form>
-      </form>
+    </form>
   );
 };
-
 
 export default Register;
