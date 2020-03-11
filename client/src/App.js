@@ -1,9 +1,9 @@
 import React from 'react';
-import Landing2 from './screens/Landing/Landing';
-import Budget2 from './screens/Budget/Budget';
-import Guests2 from './screens/Guests/Guests';
-import Stuff2 from './screens/Stuff/Stuff';
-import Calender2 from './screens/Calender/Calender';
+import Landing from './screens/Landing/Landing';
+import Budget from './screens/Budget/Budget';
+import Guests from './screens/Guests/Guests';
+import Stuff from './screens/Stuff/Stuff';
+import Calender from './screens/Calender/Calender';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,24 +15,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <ul>
-        <li>
-            <Link to="/">Landing</Link>
-          </li>
-          <li>
-            <Link to="/Guests">Guests</Link>
-          </li>
-          <li>
-            <Link to="/Calendar">Calendar</Link>
-          </li>
-          <li>
-            <Link to="/Budget">Budget</Link>
-          </li>
-          <li>
-            <Link to="/staff">staff</Link>
-          </li>
-        </ul> */}
-
+        
         <hr />
 
         <Switch>
@@ -54,34 +37,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
-}
-function Landing() {
-  return (
-  <Landing2/>
-  );
-}
-function Guests() {
-  return (
-   <Guests2/>
-  );
-}
-
-function Calender() {
-  return (
-   <Calender2/>
-  );
-}
-
-function Budget() {
-  return (
-   <Budget2/>
-  );
-}
-
-function Stuff() {
-  return (
-    <Stuff2/>
   );
 }
 
