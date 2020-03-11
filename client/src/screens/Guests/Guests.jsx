@@ -2,6 +2,7 @@ import React from 'react';
 import './Guests.css';
 
 const Guests = () => {
+
    return (
       <div>
          <div className='header'>
@@ -48,4 +49,5 @@ const Guests = () => {
       </div>
    );
 };
+
 export default Guests;
