@@ -46,12 +46,12 @@ const Landing = () => {
           <li className="categoryItem">
             <a href="/Guests">
               <img className="categoryItemImage" src="./img/guests.png" alt="guests"></img>
-              <h3> قائمة المعازيم</h3>
+              <h3>المعازيم</h3>
             </a>
           </li>
 
           <li className="categoryItem">
-            <a href="/Stuff">
+            <a href="/staff">
               <img className="categoryItemImage" src="./img/shopping-bags.png" alt="items"></img>
               <h3>الاغراض</h3>
             </a>

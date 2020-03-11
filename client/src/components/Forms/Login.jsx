@@ -13,10 +13,6 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   return (
     <section className={popupClass}>
       <form className="userForm" action="http://localhost:5000/authenticate" method="POST">
-      <a>
-          <img className="icon-LogIn" src="./img/iconLogIn.png" alt="icon-LogIn"></img>
-        <h2>LogIn</h2></a>
-
         <div className="userName">
           <label>User Name</label>
           <input type="text" name="username"></input>
