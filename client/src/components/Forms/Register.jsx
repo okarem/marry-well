@@ -34,7 +34,7 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
       alert('user name is empty');
       return;
     }
-    if (password != ConfirmedPassword) {
+    if (password !== ConfirmedPassword) {
       event.preventDefault();
       alert('confirmed password does not match the password');
     }
@@ -50,19 +50,19 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
     <form className={popupClass}>
       <form className="userForm" action="http://localhost:4000/createUser" method="POST" onSubmit={confirm}>
         <div className="userName">
-          <label>User Name</label>
+          <label>اسم المستخدم</label>
           <input type="text" name="username" onChange={userNameListener}></input>
         </div>
         <div className="password">
-          <label>Password</label>
+          <label>كلمة المرور</label>
           <input type="password" name="password" onChange={passwordListener}></input>
         </div>
         <div className="confirmedPassword">
-          <label>Confirmed password</label>
+          <label> أدخل كلمة المرور مجدداً</label>
           <input type="password" name="confirmedPassword" onChange={confPassListener}></input>
         </div>
         <div className="Register">
-          <input type="submit" value="Register" />
+          <input type="submit" value="تسجيل الدخول" />
         </div>
         <div className="closeForm" onClick={registerHandler}>
           <img src="./img/close.png" alt="closeIcon" />

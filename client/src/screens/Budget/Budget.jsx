@@ -3,6 +3,7 @@ import MaterialTable from 'material-table';
 import axios from 'axios';
 
 import './Budget.css';
+import ProgressBar from '../progressBar/progressBar';
 
 const Budget = () => {
   const [budgetDataSource, setBudgetDataSource] = React.useState([]);

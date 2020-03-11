@@ -1,24 +1,12 @@
-import React from 'react';
+import React  from 'react';
 import './Guests.css';
-
+import ProgressBar from '../progressBar/progressBar'
 const Guests = () => {
-
+   const  [progressBarTitle]  = React.useState('المعازيم')
+   const [progressBarImage]=React.useState('./img/guests.png')
    return (
       <div>
-         <div className='header'>
-            <div className='My-Guests'>
-               <h2> قائمة المعازيم</h2>
-               <div className="icon">
-
-                  <img className="categoryImage" src="./img/guests.png" alt="guests"></img>
-                  <a href='/'>
-                     <img className="icon-Home" src="./img/Home.png" alt="Home"></img>
-                  </a>
-
-               </div>
-            </div>
-
-         </div>
+         <ProgressBar progressBarTitle={progressBarTitle}  progressBarImage={progressBarImage} />
          <div className='form'>
             <div className='Add-Guests'>
                <input type="text"></input>
