@@ -14,15 +14,15 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
     <section className={popupClass}>
       <form className="userForm" action="http://localhost:5000/authenticate" method="POST">
         <div className="userName">
-          <label>User Name</label>
+          <label>اسم المستخدم</label>
           <input type="text" name="username"></input>
         </div>
         <div className="password">
-          <label>Password</label>
+          <label>كلمة المرور</label>
           <input type="password" name="password"></input>
         </div>
         <div className="LogIn">
-          <input type="submit" value="LogIn" />
+          <input type="submit" value="الدخول" />
         </div>
         <div className="closeForm" onClick={clickHandler}>
           <img src="./img/close.png" alt="closeIcon" />
