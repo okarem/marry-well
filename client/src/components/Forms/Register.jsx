@@ -12,6 +12,9 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
   return (
     <section className={popupClass}>
       <form className="userForm" action="/auth" method="POST">
+      <a>
+          <img className="icon-LogIn" src="./img/iconLogIn.png" alt="icon-LogIn"></img>
+        <h2>Sign In</h2><br></br><h6>for a free account</h6></a>
         <div className="userName">
           <label>User Name</label>
           <input type="text"></input>
