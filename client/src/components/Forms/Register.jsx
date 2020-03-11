@@ -49,11 +49,15 @@ const userNameListener = e =>{
   };
 
 
+
 let popupClass
 activateRegisterForm === 0 ? popupClass = 'popUpHidden': popupClass = 'popUpVisible'
     return (
 <form className={popupClass}>
       <form className="userForm" action="http://localhost:4000/createUser" method="POST" onSubmit={confirm}>
+        <a>
+          <img className="icon-LogIn" src="./img/iconLogIn.png" alt="icon-LogIn"></img>
+        <h2>Sign In</h2><br></br><h6>for a free account</h6></a>
         <div className="userName">
           <label>User Name</label>
           <input type="text" name='username' onChange={userNameListener}></input>

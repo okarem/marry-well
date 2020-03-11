@@ -3,7 +3,7 @@ import Landing2 from './screens/Landing/Landing';
 import Budget2 from './screens/Budget/Budget';
 import Guests2 from './screens/Guests/Guests';
 import Stuff2 from './screens/Stuff/Stuff';
-// import Calender2 from './screens/Calender/Calender';
+import Calender2 from './screens/Calender/Calender';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -40,16 +40,16 @@ function App() {
             <Landing />
           </Route>
           <Route exact path="/Guests">
-            <Guests />
+            <Guests/>
           </Route>
           <Route exact path="/Calender">
-            <Calender />
+            <Calender/>
           </Route>
           <Route path="/Budget">
-            <Budget />
+            <Budget/>
           </Route>
           <Route path="/Stuff">
-            <Stuff />
+            <Stuff/>
           </Route>
         </Switch>
       </div>
@@ -69,7 +69,7 @@ function Guests() {
 
 function Calender() {
   return (
-   <Calender/>
+   <Calender2/>
   );
 }
 
