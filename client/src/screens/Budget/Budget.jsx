@@ -4,7 +4,7 @@ import MaterialTable from 'material-table';
 import './Budget.css';
 
 const Budget = () => {
-  const [state, setState] = React.useState({
+  const [budgetData, setBudgetData] = React.useState({
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
       { title: 'السعر', field: 'price', type: 'currency' },
@@ -13,7 +13,10 @@ const Budget = () => {
     ],
     data: [
       { itemName: 'فناجين', quantity: 15, price: 90, category: 1 },
-      { itemName: 'قاعة', quantity: 30, price: 4200, category: 2 }
+      { itemName: 'قاعة', quantity: 30, price: 4200, category: 2 },
+      { itemName: 'كنبات', quantity: 20, price: 130, category: 1 },
+      { itemName: 'ملابس', quantity: 45, price: 90, category: 1 },
+      { itemName: 'ادوات مطبخ', quantity: 15, price: 90, category: 1 }
     ]
   });
 
@@ -25,25 +28,29 @@ const Budget = () => {
           header: {
             actions: ''
           },
+          toolbar: { searchTooltip: 'بحث', searchPlaceholder: 'بحث' },
+
           body: {
+            emptyDataSourceMessage: 'لا يوجد معطيات',
+            addTooltip: 'اضافة',
+            deleteTooltip: 'حذف',
+            editTooltip: 'تعديل',
+
             editRow: {
-              saveTooltip: 'Salvar',
-              cancelTooltip: 'Cancelar',
-              deleteText: 'Tem certeza que deseja deletar este registro?'
-            },
-            addTooltip: 'Adicionar',
-            deleteTooltip: 'Deletar',
-            editTooltip: 'Editar'
+              saveTooltip: 'تأكيد',
+              cancelTooltip: 'الغاء',
+              deleteText: 'هل انت متأكد من حذف هذا السطر؟'
+            }
           }
         }}
-        columns={state.columns}
-        data={state.data}
+        columns={budgetData.columns}
+        data={budgetData.data}
         options={{
-          currencySettings: {},
-          actionsColumnIndex: -1,
           showTitle: false,
-          searchFieldAlignment: 'left',
           paging: false,
+          actionsColumnIndex: -1,
+          searchFieldAlignment: 'right',
+          searchFieldStyle: { textAlign: 'right' },
           headerStyle: { textAlign: 'right' },
           cellStyle: { textAlign: 'right' }
         }}
@@ -52,10 +59,10 @@ const Budget = () => {
             new Promise(resolve => {
               setTimeout(() => {
                 resolve();
-                setState(prevState => {
-                  const data = [...prevState.data];
+                setBudgetData(prevBudgetData => {
+                  const data = [...prevBudgetData.data];
                   data.push(newData);
-                  return { ...prevState, data };
+                  return { ...prevBudgetData, data };
                 });
               }, 600);
             }),
@@ -64,10 +71,10 @@ const Budget = () => {
               setTimeout(() => {
                 resolve();
                 if (oldData) {
-                  setState(prevState => {
-                    const data = [...prevState.data];
+                  setBudgetData(prevBudgetData => {
+                    const data = [...prevBudgetData.data];
                     data[data.indexOf(oldData)] = newData;
-                    return { ...prevState, data };
+                    return { ...prevBudgetData, data };
                   });
                 }
               }, 600);
@@ -76,10 +83,10 @@ const Budget = () => {
             new Promise(resolve => {
               setTimeout(() => {
                 resolve();
-                setState(prevState => {
-                  const data = [...prevState.data];
+                setBudgetData(prevBudgetData => {
+                  const data = [...prevBudgetData.data];
                   data.splice(data.indexOf(oldData), 1);
-                  return { ...prevState, data };
+                  return { ...prevBudgetData, data };
                 });
               }, 600);
             })
