@@ -2,8 +2,10 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 import './Budget.css';
+import ProgressBar from '../progressBar/progressBar'
 
 const Budget = () => {
+
   const [budgetData, setBudgetData] = React.useState({
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
@@ -30,11 +32,13 @@ const Budget = () => {
           },
           toolbar: { searchTooltip: 'بحث', searchPlaceholder: 'بحث' },
 
+
           body: {
             emptyDataSourceMessage: 'لا يوجد معطيات',
             addTooltip: 'اضافة',
             deleteTooltip: 'حذف',
             editTooltip: 'تعديل',
+
 
             editRow: {
               saveTooltip: 'تأكيد',
@@ -94,6 +98,7 @@ const Budget = () => {
       />
     </div>
   );
+
 };
 
 export default Budget;
