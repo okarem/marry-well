@@ -1,26 +1,3 @@
-
-.header {
-  width: 100%;
-  background-color: #e2dad8;
-}
-.My-Guests {
-  font-size: x-large;
-  height: 150px;
-  text-align: center;
-}
-.categoryImage {
-  width: 100px;
-  height: 100px;
-  margin-left: 48%;
-}
-.icon-Home {
-  width: 100px;
-  height: 100px;
-}
-.icon {
-  display: flex;
-  justify-content: space-between;
-}
 .form {
   margin-left: 38%;
   margin-top: 5%;
@@ -120,24 +97,7 @@ ul li.checked::before {
   width: 7px;
 }
 @media screen and (max-width: 800px) {
-  .header {
-    width: 100%;
-    background-color: #e2dad8;
-  }
-  .My-Guests {
-    font-size: large;
-    height: 150px;
-    text-align: center;
-  }
-  .categoryImage {
-    width: 80px;
-    height: 80px;
-    margin-left: 40%;
-  }
-  .icon-Home {
-    width: 60px;
-    height: 60px;
-  }
+  
   .form {
     margin-left: 10%;
     margin-top: 5%;
