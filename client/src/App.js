@@ -5,21 +5,15 @@ import Guests from './screens/Guests/Guests';
 import Stuff from './screens/Stuff/Stuff';
 import Calender from './screens/Calender/Calender';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <Router>
       <div>
-        
         <hr />
 
         <Switch>
-        <Route exact path="/">
+          <Route exact path="/">
             <Landing />
           </Route>
           <Route exact path="/Guests">
