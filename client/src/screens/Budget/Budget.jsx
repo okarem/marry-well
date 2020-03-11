@@ -1,8 +1,9 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import axios from 'axios';
 
 import './Budget.css';
-import ProgressBar from '../progressBar/progressBar'
+import ProgressBar from '../progressBar/progressBar';
 
 const Budget = () => {
 
@@ -11,20 +12,24 @@ const Budget = () => {
 
 
   const [budgetData, setBudgetData] = React.useState({
+
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
       { title: 'السعر', field: 'price', type: 'currency' },
       { title: 'الكمية', field: 'quantity', type: 'numeric' },
       { title: 'اسم الغرض', field: 'itemName' }
-    ],
-    data: [
-      { itemName: 'فناجين', quantity: 15, price: 90, category: 1 },
-      { itemName: 'قاعة', quantity: 30, price: 4200, category: 2 },
-      { itemName: 'كنبات', quantity: 20, price: 130, category: 1 },
-      { itemName: 'ملابس', quantity: 45, price: 90, category: 1 },
-      { itemName: 'ادوات مطبخ', quantity: 15, price: 90, category: 1 }
     ]
   });
+
+  React.useEffect(() => {
+    axios
+      .get('http://localhost:5000/api/getBudget')
+      .then(res => res.data)
+      .then(finalRes => {
+        setBudgetDataState({ ...budgetDataState, data: finalRes });
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <div className="table">
@@ -36,13 +41,11 @@ const Budget = () => {
           },
           toolbar: { searchTooltip: 'بحث', searchPlaceholder: 'بحث' },
 
-
           body: {
             emptyDataSourceMessage: 'لا يوجد معطيات',
             addTooltip: 'اضافة',
             deleteTooltip: 'حذف',
             editTooltip: 'تعديل',
-
   const [budgetData, setBudgetData] = React.useState({
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
