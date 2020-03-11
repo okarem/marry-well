@@ -21,19 +21,19 @@ const Guests = () => {
          <div className='form'>
             <div className='Add-Guests'>
                <input type="text"></input>
-               <select id="status">
+               <select className="status">
                   <option value="single">اعزب</option>
                   <option value="family">عائلته</option>
                   <option value="relationship"> خطيبته</option>
                </select>
-               <select id="FemaleMale">
+               <select className="FemaleMale">
                   <option value="female">انثى </option>
                   <option value="male">ذكر</option>
                </select>
                <button className="Guests-Button"> اضافه</button><div className='select'>
 
                </div>
-            </div>
+            </div >
 
             <div>
 

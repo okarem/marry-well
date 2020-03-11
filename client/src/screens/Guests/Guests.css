@@ -51,13 +51,15 @@
   flex-direction: row-reverse;
   justify-content: space-between; 
 }
-#status
+.status 
 {
   background-color: #e2dad8;
+  width: 50px;
 
 } 
-#FemaleMale{
+.FemaleMale{
   background-color: #e2dad8;
+  width: 50px;
 
 }
 .select{
@@ -157,4 +159,5 @@ ul li.checked::before {
     height: 100%;
     text-align: right;
   }
+
 }
