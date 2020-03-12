@@ -1,7 +1,0 @@
-[
-  { "itemName": "فناجين", "quantity": 15, "price": 90, "category": 1 },
-  { "itemName": "قاعة", "quantity": 30, "price": 4200, "category": 2 },
-  { "itemName": "كنبات", "quantity": 20, "price": 130, "category": 1 },
-  { "itemName": "ملابس", "quantity": 45, "price": 90, "category": 1 },
-  { "itemName": "ادوات مطبخ", "quantity": 15, "price": 90, "category": 1 }
-]

@@ -6,11 +6,9 @@ const Landing = () => {
   const [activateLoginForm, setActivateLoginForm] = React.useState(0);
   const [activateRegisterForm, setActivateRegisterForm] = React.useState(0);
   const loginClickHandler = () => {
-    document.body.style.overflow = 'hidden';
     activateLoginForm === 0 ? setActivateLoginForm(1) : setActivateLoginForm(0);
   };
   const registerClickHandler = () => {
-    document.body.style.overflow = 'hidden';
     activateRegisterForm === 0 ? setActivateRegisterForm(1) : setActivateRegisterForm(0);
   };
 
@@ -44,7 +42,7 @@ const Landing = () => {
           </li>
 
           <li className="categoryItem">
-            <a href="/Guests " >
+            <a href="/Guests ">
               <img className="categoryItemImage" src="./img/guests.png" alt="guests"></img>
               <h3>المعازيم</h3>
             </a>
