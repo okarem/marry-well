@@ -1,6 +1,6 @@
 import React from 'react';
 import './Stuff.css';
-import ProgressBar from '../progressBar/progressBar';
+import ProgressBar from '../../components/progressBar/progressBar';
 import MaterialTable from 'material-table';
 
 const Stuff = () => {
