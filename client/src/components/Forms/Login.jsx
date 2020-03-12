@@ -4,7 +4,6 @@ import './Forms.css';
 const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   const clickHandler = () => {
     setActivateLoginForm(0);
-    document.body.style.overflow = 'visible';
   };
 
   let popupClass;
