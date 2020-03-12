@@ -2,9 +2,12 @@ import React from 'react';
 import Login from '../../components/Forms/Login';
 import Register from '../../components/Forms/Register';
 import './Landing.css';
+import { useCookies } from 'react-cookie';
+
 const Landing = () => {
   const [activateLoginForm, setActivateLoginForm] = React.useState(0);
   const [activateRegisterForm, setActivateRegisterForm] = React.useState(0);
+  const [cookie, setCookie]=React.useState(null);
   const loginClickHandler = () => {
     document.body.style.overflow = 'hidden';
     activateLoginForm === 0 ? setActivateLoginForm(1) : setActivateLoginForm(0);
@@ -13,6 +16,14 @@ const Landing = () => {
     document.body.style.overflow = 'hidden';
     activateRegisterForm === 0 ? setActivateRegisterForm(1) : setActivateRegisterForm(0);
   };
+
+  const handleCookie = ()=>{
+    console.log("inside handle cookie");
+    if (cookie === null){
+      console.log("inside if cookie null");
+      return <h1>please log in</h1>;
+    }
+  }
 
   return (
     <div>
