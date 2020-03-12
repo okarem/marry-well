@@ -10,7 +10,11 @@ const Budget = () => {
   const [progressBarImage] = React.useState('./img/cost.png');
   const [budgetDataState, setBudgetDataState] = React.useState({
     columns: [
-      { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
+      {
+        title: 'المجموعة',
+        field: 'category',
+        lookup: { 1: 'اغراض', 2: 'عاملين' }
+      },
       { title: 'السعر', field: 'price', type: 'currency' },
       { title: 'الكمية', field: 'quantity', type: 'numeric' },
       { title: 'اسم الغرض', field: 'itemName' }

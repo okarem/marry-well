@@ -68,6 +68,6 @@ const Landing = () => {
 
       <Register activateRegisterForm={activateRegisterForm} setActivateRegisterForm={setActivateRegisterForm} />
     </div>
-  );
+  );  
 };
 export default Landing;
