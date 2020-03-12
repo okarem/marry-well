@@ -1,0 +1,38 @@
+[
+  {
+    "itemName": "فناجين",
+    "quantity": 15,
+    "price": 90,
+    "category": 1
+  },
+  {
+    "itemName": "قاعة",
+    "quantity": 30,
+    "price": 4200,
+    "category": 2
+  },
+  {
+    "itemName": "فناجين",
+    "quantity": 15,
+    "price": 90,
+    "category": 1
+  },
+  {
+    "itemName": "سبانخ",
+    "quantity": "35",
+    "price": "12",
+    "category": "2"
+  },
+  {
+    "itemName": "KArem",
+    "quantity": "20",
+    "price": "10",
+    "category": "2"
+  },
+  {
+    "itemName": "aaaa",
+    "quantity": "20",
+    "price": "10",
+    "category": "2"
+  }
+]

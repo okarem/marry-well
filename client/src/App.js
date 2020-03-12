@@ -6,36 +6,27 @@ import Stuff from './screens/Stuff/Stuff';
 import Calender from './screens/Calender/Calender';
 
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import ProgressBar from './screens/progressBar/progressBar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div>
-        <hr />
-        <Switch>
+      <Switch>
         <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/Guests">
-            <Guests />
-          </Route>
-          <Route exact path="/Calender">
-            <Calender/>
-          </Route>
-          <Route path="/Budget">
-            <Budget />
-          </Route>
-          <Route path="/Stuff">
-            <Stuff />
-          </Route>
-        </Switch>
-      </div>
+          <Landing />
+        </Route>
+        <Route exact path="/Guests">
+          <Guests />
+        </Route>
+        <Route exact path="/Calender">
+          <Calender />
+        </Route>
+        <Route path="/Budget">
+          <Budget />
+        </Route>
+        <Route path="/Stuff">
+          <Stuff />
+        </Route>
+      </Switch>
     </Router>
   );
 }
