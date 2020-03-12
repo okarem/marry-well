@@ -3,10 +3,9 @@ import MaterialTable from 'material-table';
 import axios from 'axios';
 
 import './Budget.css';
-import ProgressBar from '../progressBar/progressBar';
+import CircularDeterminate from '../../components/Progress/Progress';
 
 const Budget = () => {
-  const [budgetDataSource, setBudgetDataSource] = React.useState([]);
   const [budgetDataState, setBudgetDataState] = React.useState({
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اغراض', 2: 'عاملين' } },
@@ -26,15 +25,19 @@ const Budget = () => {
       .catch(err => console.log(err));
   }, []);
 
+  if (budgetDataState.data === undefined) {
+    return <CircularDeterminate />;
+  }
+
   return (
-    <div className="table">
+    <div className="budgetTable">
       <MaterialTable
-        title="تكاليف المستلزمات"
+        title=""
         localization={{
           header: {
             actions: ''
           },
-          toolbar: { searchTooltip: 'بحث', searchPlaceholder: 'بحث' },
+          toolbar: { searchTooltip: 'بحث', searchPlaceholder: ' بحث', exportTitle: 'csv تحميل ملف ' },
 
           body: {
             emptyDataSourceMessage: 'لا يوجد معطيات',
@@ -56,9 +59,12 @@ const Budget = () => {
           paging: false,
           actionsColumnIndex: -1,
           searchFieldAlignment: 'right',
-          searchFieldStyle: { textAlign: 'right' },
-          headerStyle: { textAlign: 'right' },
-          cellStyle: { textAlign: 'right' }
+          exportButton: true,
+          rowStyle: { backgroundColor: '#EEF0F2', color: '#353B3C' },
+          searchFieldStyle: { direction: 'rtl' },
+          headerStyle: { textAlign: 'center', backgroundColor: '#353B3C', color: '#C6C7C4', fontSize: '20px', fontWeight: 'bold' },
+          cellStyle: { textAlign: 'center', fontSize: '16px' },
+          padding: 'dense'
         }}
         editable={{
           onRowAdd: newData =>

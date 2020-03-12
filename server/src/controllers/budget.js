@@ -1,11 +1,12 @@
-const { getBudgetData } = require('../models/budget');
+const { getBudgetData, addBudgetItem } = require('../models/budget');
 
 exports.fetchBudgetData = (req, res) => {
   res.json(getBudgetData());
 };
 
 exports.addBudgetDataItem = (req, res) => {
-  console.log(req.body);
-
-  res.send('Hello');
+  const { itemName, quantity, price, category } = req.body.newData;
+  addBudgetItem(itemName, quantity, price, category)
+    .then(message => res.send(message))
+    .catch(err => res.send(err));
 };
