@@ -1,7 +1,9 @@
 import React from 'react';
-import './Stuff.css';
-import ProgressBar from '../../components/progressBar/progressBar';
 import MaterialTable from 'material-table';
+import axios from 'axios';
+import ProgressBar from '../../components/progressBar/progressBar';
+import './Stuff.css';
+
 
 const Stuff = () => {
   const [progressBarTitle] = React.useState('الاغراض');
