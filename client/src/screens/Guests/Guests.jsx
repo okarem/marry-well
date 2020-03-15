@@ -52,9 +52,12 @@ const Guests = () => {
             paging: false,
             actionsColumnIndex: -1,
             searchFieldAlignment: 'right',
-            searchFieldStyle: { textAlign: 'right' },
-            headerStyle: { textAlign: 'right' },
-            cellStyle: { textAlign: 'right' }
+            exportButton: true,
+            rowStyle: { backgroundColor: '#EEF0F2', color: '#353B3C' },
+            searchFieldStyle: { direction: 'rtl' },
+            headerStyle: { textAlign: 'center', backgroundColor: '#353B3C', color: '#C6C7C4', fontSize: '20px', fontWeight: 'bold' },
+            cellStyle: { textAlign: 'center', fontSize: '16px' },
+            padding: 'dense'
           }}
           editable={{
             onRowAdd: newData =>
