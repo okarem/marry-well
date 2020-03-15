@@ -44,7 +44,7 @@ const Landing = () => {
           <li className="categoryItem">
             <a href="/Guests ">
               <img className="categoryItemImage" src="./img/guests.png" alt="guests"></img>
-              <h3>المعازيم</h3>
+              <h3> المعازيم</h3>
             </a>
           </li>
 
