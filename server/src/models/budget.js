@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const BUDGET_PATH = path.resolve('./src/budget.json');
 const dataCopy = require(BUDGET_PATH);
+const {
+  getGuestsTable
+} = require("../queries/getData");
 
 exports.getBudgetData = () => {
   const data = require(BUDGET_PATH);
@@ -9,6 +12,7 @@ exports.getBudgetData = () => {
 };
 
 exports.addBudgetItem = async (itemName, quantity, price, category) => {
+  console.log(getGuestsTable());
   return new Promise((resolve, reject) => {
     const newItem = {
       itemName,
