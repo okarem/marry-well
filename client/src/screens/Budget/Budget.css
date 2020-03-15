@@ -3,5 +3,10 @@
   padding: 20px;
   margin: 0 auto;
 }
+
+.MuiTable-root {
+  box-shadow: none;
+}
+
 @media screen and (max-width: 800px) {
 }
