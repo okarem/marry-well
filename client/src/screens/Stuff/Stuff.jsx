@@ -89,7 +89,7 @@ const Stuff = () => {
             onRowAdd: newData =>
               new Promise(resolve => {
                 axios
-                  .post('http://localhost:5000/api/addBudgetItem', { newData })
+                  .post('http://localhost:5000/api/addStuffItem', { newData })
                   .then(res => console.log(res))
                   .catch(err => console.log(err));
 
