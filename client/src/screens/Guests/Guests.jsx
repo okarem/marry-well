@@ -9,10 +9,13 @@ const Guests = () => {
     columns: [
       { title: 'المجموعة', field: 'category', lookup: { 1: 'اعزب', 2: 'متزوج', 3: 'خاطب'  } },
       { title: 'الفئه ', field: 'to', lookup: { 1: 'ذكر', 2: 'انثى'  } },
+      { title: 'البلد', field: 'city' },
       { title: 'الاسم ', field: 'Name' },
+      
+
 
     ],
-    data: [{ Name: 'فاطمه', to: 2 , category: 3}]
+    data: [{ Name: 'فاطمه', to: 2 , category: 3, city: 'يافه'}]
   });
 
   return (
