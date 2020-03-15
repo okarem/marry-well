@@ -25,7 +25,7 @@ const Guests = () => {
       </div>
       <div className="table">
         <MaterialTable
-          title="قائمه المعازيم"
+          title="قائمة المعازيم"
           localization={{
             header: {
               actions: ''
