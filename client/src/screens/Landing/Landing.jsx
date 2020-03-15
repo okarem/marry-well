@@ -19,16 +19,19 @@ const Landing = () => {
           <img className="couplesImage" src="./img/wedding.png" alt="Couples"></img>
         </a>
 
-        <button className="signInButton" onClick={loginClickHandler}>
+        
+      </header>
+
+      <section className="content">
+        <div className='logSign'>
+      <button className="signInButton" onClick={loginClickHandler}>
           الدخول
         </button>
 
         <button className="registerButton" onClick={registerClickHandler}>
           تسجيل الدخول
         </button>
-      </header>
-
-      <section className="content">
+        </div>
         <div className="weddingQuote">
           <h2> يقضي الكثير من الناس وقتا في التخطيط لحفلات الزفاف ، أكثر من الوقت الذي يقضونه في التخطيط للزواج. - زيغ زيغلر </h2>
         </div>

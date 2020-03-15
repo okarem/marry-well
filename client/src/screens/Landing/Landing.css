@@ -62,16 +62,34 @@ h3 {
 }
 
 .signInButton {
-  font-size: 25px;
-  position: absolute;
-  left: 0;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px;
+  border: #351e11 2px solid;
+  color: black;
+ background-color: #e2dad8;
+ width: 100px;
+ height: 70px;
+
 }
 
 .registerButton {
-  font-size: 25px;
-  position: absolute;
-  top: 30px;
-  left: 0;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px;
+  border: #351e11 2px solid;
+  color: black;
+ background-color: #e2dad8;
+ width: 100px;
+ height: 70px;
+}
+.logSign{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  
 }
 
 @media screen and (max-width: 800px) {
@@ -105,5 +123,18 @@ h3 {
   .categoryItemImage {
     width: 100%;
     height: 15vh;
+  }
+
+  .signInButton {
+     width: 60px;
+     height: 50px;
+     font-size: 10px;
+
+  }
+
+  .registerButton{
+    width: 60px;
+     height: 50px;
+     font-size: 10px;
   }
 }

@@ -6,7 +6,7 @@
   height: 100vh;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 100%;
   transition: opacity 0.8s;
 }
 .popUpHidden {
@@ -27,6 +27,7 @@
   align-items: center;
   position: relative;
   border-radius: 15px;
+
 }
 .userName,
 .password {
