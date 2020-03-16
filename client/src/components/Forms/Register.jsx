@@ -48,7 +48,7 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
   activateRegisterForm === 0 ? (popupClass = 'popUpHidden') : (popupClass = 'popUpVisible');
   return (
     <form className={popupClass}>
-      <form className="userForm" action="http://localhost:4000/createUser" method="POST" onSubmit={confirm}>
+      <form className="userForm" action="http://localhost:5000/createUser" method="POST" onSubmit={confirm}>
         <div className="userName">
           <label>اسم المستخدم</label>
           <input type="text" name="username" onChange={userNameListener}></input>
