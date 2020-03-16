@@ -13,7 +13,7 @@ exports.getstuffData = () => {
 
 
 exports.addStuffItem = async (itemName, category) => {
-  const result = insertToBudget(1, itemName, category, (err, res) => {
+  const result = insertToStuff(1, itemName, category, (err, res) => {
     if (err) {
       return err;
     }
