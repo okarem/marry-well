@@ -1,8 +1,12 @@
 const { getStuffData, addStuffItem } = require('../models/stuff');
 
 exports.fetchStuffData = (req, res) => {
-  res.json(getStuffData());
-};
+  let data = [];
+  getStuffData((err, result) => {
+    if (err) return err;
+    res.json(result);
+  });
+};	
 
 exports.addStuffDataItem = (req, res) => {
   const { itemName, category } = req.body.newData;
