@@ -1,47 +1,51 @@
-import React from 'react';
-import './Guests.css';
-import MaterialTable from 'material-table';
-import ProgressBar from '../../components/progressBar/progressBar';
+import React from "react";
+import "./Guests.css";
+import MaterialTable from "material-table";
+import ProgressBar from "../../components/progressBar/progressBar";
 const Guests = () => {
-  const [progressBarTitle] = React.useState('المعازيم');
-  const [progressBarImage] = React.useState('./img/guests.png');
+  const [progressBarTitle] = React.useState("المعازيم");
+  const [progressBarImage] = React.useState("./img/guests.png");
   const [guestsData, setGuestsData] = React.useState({
     columns: [
-      { title: 'المجموعة', field: 'category', lookup: { 1: 'اعزب', 2: 'متزوج', 3: 'خاطب'  } },
-      { title: 'الفئه ', field: 'to', lookup: { 1: 'ذكر', 2: 'انثى'  } },
-      { title: 'البلد', field: 'city' },
-      { title: 'الاسم ', field: 'Name' },
-      
-
-
+      {
+        title: "المجموعة",
+        field: "category",
+        lookup: { 1: "اعزب", 2: "متزوج", 3: "خاطب" }
+      },
+      { title: "الفئه ", field: "to", lookup: { 1: "ذكر", 2: "انثى" } },
+      { title: "البلد", field: "city" },
+      { title: "الاسم ", field: "Name" }
     ],
-    data: [{ Name: 'فاطمه', to: 2 , category: 3, city: 'يافه'}]
+    data: [{ Name: "فاطمه", to: 2, category: 3, city: "يافه" }]
   });
 
   return (
     <div>
       <div>
-        <ProgressBar progressBarTitle={progressBarTitle} progressBarImage={progressBarImage} />
+        <ProgressBar
+          progressBarTitle={progressBarTitle}
+          progressBarImage={progressBarImage}
+        />
       </div>
       <div className="table">
         <MaterialTable
           title="قائمة المعازيم"
           localization={{
             header: {
-              actions: ''
+              actions: ""
             },
-            toolbar: { searchTooltip: 'بحث', searchPlaceholder: 'بحث' },
+            toolbar: { searchTooltip: "بحث", searchPlaceholder: "بحث" },
 
             body: {
-              emptyDataSourceMessage: 'لا يوجد معطيات',
-              addTooltip: 'اضافة',
-              deleteTooltip: 'حذف',
-              editTooltip: 'تعديل',
+              emptyDataSourceMessage: "لا يوجد معطيات",
+              addTooltip: "اضافة",
+              deleteTooltip: "حذف",
+              editTooltip: "تعديل",
 
               editRow: {
-                saveTooltip: 'تأكيد',
-                cancelTooltip: 'الغاء',
-                deleteText: 'هل انت متأكد من حذف هذا السطر؟'
+                saveTooltip: "تأكيد",
+                cancelTooltip: "الغاء",
+                deleteText: "هل انت متأكد من حذف هذا السطر؟"
               }
             }
           }}
@@ -51,13 +55,19 @@ const Guests = () => {
             showTitle: false,
             paging: false,
             actionsColumnIndex: -1,
-            searchFieldAlignment: 'right',
+            searchFieldAlignment: "right",
             exportButton: true,
-            rowStyle: { backgroundColor: '#EEF0F2', color: '#353B3C' },
-            searchFieldStyle: { direction: 'rtl' },
-            headerStyle: { textAlign: 'center', backgroundColor: '#353B3C', color: '#C6C7C4', fontSize: '20px', fontWeight: 'bold' },
-            cellStyle: { textAlign: 'center', fontSize: '16px' },
-            padding: 'dense'
+            rowStyle: { backgroundColor: "#EEF0F2", color: "#353B3C" },
+            searchFieldStyle: { direction: "rtl" },
+            headerStyle: {
+              textAlign: "center",
+              backgroundColor: "#353B3C",
+              color: "#C6C7C4",
+              fontSize: "20px",
+              fontWeight: "bold"
+            },
+            cellStyle: { textAlign: "center", fontSize: "16px" },
+            padding: "dense"
           }}
           editable={{
             onRowAdd: newData =>
@@ -97,6 +107,7 @@ const Guests = () => {
               })
           }}
         />
+        <img className="cardImage" src="./img/card.png" alt="card"></img>
       </div>
     </div>
   );

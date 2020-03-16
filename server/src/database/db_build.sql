@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 
 create table users (
 	userId SERIAL PRIMARY KEY,
@@ -23,16 +23,16 @@ create table items (
     userId INT NOT NULL,
 	itemDesc VARCHAR(200) NOT NULL,
     itemCategory Varchar(50) NOT NULL DEFAULT 'other',
-    FOREIGN KEY (userId) REFERENCES users(userId)
+    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
 insert into items (userId, itemDesc, itemCategory) values (1, N'قهوة', N'مشروب');
 insert into items (userId, itemDesc, itemCategory) values (1, N'مياه معدنيه', N'مشروب');
-insert into items (userId, itemDesc, itemCategory) values (1, N'تول', N'زينة');
-insert into items (userId, itemDesc, itemCategory) values (1, 'cups', 'dinning');
+insert into items (userId, itemDesc, itemCategory) values (2, N'تول', N'زينة');
+insert into items (userId, itemDesc, itemCategory) values (2, 'cups', 'dinning');
 insert into items (userId, itemDesc, itemCategory) values (1, 'plates', 'dinning');
-insert into items (userId, itemDesc, itemCategory) values (1, 'water', 'drinks');
-insert into items (userId, itemDesc, itemCategory) values (1, 'soft drink', 'drinks');
+insert into items (userId, itemDesc, itemCategory) values (3, 'water', 'drinks');
+insert into items (userId, itemDesc, itemCategory) values (3, 'soft drink', 'drinks');
 insert into items (userId, itemDesc, itemCategory) values (1, 'tissue', 'dinning');
 
 DROP TABLE IF EXISTS guests;
@@ -44,7 +44,7 @@ create table guests (
 	city VARCHAR(50) NOT NULL,
 	gender VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL,
-    FOREIGN KEY (userId) REFERENCES users(userId)
+    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
 insert into guests (userId, name, city,gender,status) values (1, 'Ron', 'Haifa','Male','single');
@@ -55,6 +55,22 @@ insert into guests (userId, name, city,gender,status) values (1, 'koka', 'TLV','
 insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','Male','engaged');
 insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','Male','married');
 
+DROP TABLE IF EXISTS budget;
+
+create table budget (
+	budgetId SERIAL PRIMARY KEY,
+	userId INT NOT NULL,
+	item VARCHAR(100) NOT NULL,
+    quantity int NOT NULL,
+	price DOUBLE PRECISION,
+	category VARCHAR(100) DEFAULT 'other',
+	FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
+);
+
+insert into budget (userId,item,quantity,price,category) values ('2','CocaCola',4,3.5,'Drinks');
+insert into budget (userId,item,quantity,price,category) values ('2','7UP',6,100,'Drinks');
+insert into budget (userId,item,quantity,price,category) values ('2','water',8,100,'Drinks');
+insert into budget (userId,item,quantity,price,category) values ('2','soda',11,125.5,'Drinks');
 
 DROP TABLE IF EXISTS budget;
 

@@ -20,6 +20,7 @@ exports.addUser = (req, res) => {
       .then(hash => {
         createUser(userName,hash)
         .then(() => res.redirect("http://localhost:3000/Budget"))
+        .then(() => res.redirect("http://localhost:3000/Stuff"))
         .catch(() => res.redirect("http://localhost:3000/Error"));
       
       })
