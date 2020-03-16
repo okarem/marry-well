@@ -9,8 +9,10 @@ exports.fetchBudgetData = (req, res) => {
 };
 
 exports.addBudgetDataItem = (req, res) => {
-  const { itemName, quantity, price, category } = req.body.newData;
-  addBudgetItem(itemName, quantity, price, category)
-    .then(message => res.send(message))
-    .catch(err => res.send(err));
+  const { item, quantity, price, category } = req.body.newData;
+
+  addBudgetItem(3, item, quantity, price, category, (err, result) => {
+    if (err) return err;
+    return result;
+  });
 };

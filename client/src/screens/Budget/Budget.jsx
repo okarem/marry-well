@@ -1,9 +1,9 @@
 import React from 'react';
-import MaterialTable from 'material-table';
 import axios from 'axios';
+import MaterialTable from 'material-table';
 import ProgressBar from '../../components/progressBar/progressBar';
-import './Budget.css';
 import CircularDeterminate from '../../components/Progress/Progress';
+import './Budget.css';
 
 const Budget = () => {
   const [progressBarTitle] = React.useState('تكاليف');
@@ -26,10 +26,9 @@ const Budget = () => {
       .get('http://localhost:5000/api/getBudget')
       .then(res => res.data)
       .then(finalRes => {
-        console.log(finalRes);
         setBudgetDataState({ ...budgetDataState, data: finalRes });
       })
-      .catch(err => console.log(err));
+      .catch(err => err.message);
   }, []);
 
   if (budgetDataState.data === undefined) {
@@ -44,17 +43,13 @@ const Budget = () => {
         <MaterialTable
           title=""
           localization={{
-            header: {
-              actions: ''
-            },
+            header: { actions: '' },
             toolbar: { searchTooltip: 'بحث', searchPlaceholder: ' بحث', exportTitle: 'csv تحميل ملف ' },
-
             body: {
               emptyDataSourceMessage: 'لا يوجد معطيات',
               addTooltip: 'اضافة',
               deleteTooltip: 'حذف',
               editTooltip: 'تعديل',
-
               editRow: {
                 saveTooltip: 'تأكيد',
                 cancelTooltip: 'الغاء',
@@ -81,8 +76,10 @@ const Budget = () => {
               new Promise(resolve => {
                 axios
                   .post('http://localhost:5000/api/addBudgetItem', { newData })
-                  .then(res => console.log(res))
-                  .catch(err => console.log(err));
+                  .then(() => {
+                    return;
+                  })
+                  .catch(err => err.message);
 
                 setTimeout(() => {
                   resolve();
