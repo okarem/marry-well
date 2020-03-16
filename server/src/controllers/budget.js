@@ -1,7 +1,11 @@
 const { getBudgetData, addBudgetItem } = require('../models/budget');
 
 exports.fetchBudgetData = (req, res) => {
-  res.json(getBudgetData());
+  let data = [];
+  getBudgetData((err, result) => {
+    if (err) return err;
+    res.json(result);
+  });
 };
 
 exports.addBudgetDataItem = (req, res) => {

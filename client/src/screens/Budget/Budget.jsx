@@ -13,11 +13,11 @@ const Budget = () => {
       {
         title: 'المجموعة',
         field: 'category',
-        lookup: { 1: 'اغراض', 2: 'عاملين' }
+        lookup: { 1: 'Drinks', 2: 'عاملين', 3: 'Food', 4: 'Accessories' }
       },
       { title: 'السعر', field: 'price', type: 'currency' },
       { title: 'الكمية', field: 'quantity', type: 'numeric' },
-      { title: 'اسم الغرض', field: 'itemName' }
+      { title: 'اسم الغرض', field: 'item' }
     ]
   });
 
@@ -26,6 +26,7 @@ const Budget = () => {
       .get('http://localhost:5000/api/getBudget')
       .then(res => res.data)
       .then(finalRes => {
+        console.log(finalRes);
         setBudgetDataState({ ...budgetDataState, data: finalRes });
       })
       .catch(err => console.log(err));
