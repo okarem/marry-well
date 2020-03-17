@@ -14,5 +14,10 @@ const dbConnection = require('../database/db_connection');
           });
       };
 
-
+      exports.getGuests = cb => {
+        dbConnection.query('SELECT * FROM guests', (err, result) => {
+          if (err) return cb(err);
+          return cb(null, result.rows);
+        });
+      };
             

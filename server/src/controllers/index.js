@@ -4,7 +4,7 @@ const router = express.Router();
 const user = require('./users');
 const { fetchBudgetData, addBudgetDataItem } = require('./budget');
 const { fetchStuffData, addStuffDataItem } = require('./stuff');
-const { addGuestsData } = require('./guests');
+const { addGuestsData,getGuestsData } = require('./guests');
 
 const createUser = require('./createUser');
 
@@ -15,5 +15,6 @@ router.post('/api/addStuffItem', addStuffDataItem);
 router.post('/authenticate', user.authenticateUser);
 router.post('/createUser', createUser.addUser);
 router.post('/api/addGuests', addGuestsData);
+router.get('/api/getGuests', getGuestsData);
 
 module.exports = router;

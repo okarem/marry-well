@@ -1,5 +1,5 @@
 
-const { addGuests } = require('../models/guests');
+const { addGuests,getGuests } = require('../models/guests');
 
 
 exports.addGuestsData = (req, res) => {
@@ -8,5 +8,13 @@ exports.addGuestsData = (req, res) => {
     if (err) return err;
     res.send(result);
   });
-  //return res;
 };
+
+
+exports.getGuestsData = (req, res) => {
+    getGuests((err, result) => {
+      if (err) return err;
+      res.send(result);
+    });
+  };
+
