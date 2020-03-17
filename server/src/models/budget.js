@@ -1,44 +1,19 @@
-const fs = require('fs');
-const path = require('path');
-const BUDGET_PATH = path.resolve('./src/budget.json');
-const dataCopy = require(BUDGET_PATH);
-const {
-  insertToBudget
-} = require("../queries/postData");
+const dbConnection = require('../database/db_connection');
 
-exports.getBudgetData = () => {
-  const data = require(BUDGET_PATH);
-  return data;
+exports.getBudgetData = cb => {
+  dbConnection.query('SELECT * FROM budget', (err, result) => {
+    if (err) return cb(err);
+    return cb(null, result.rows);
+  });
 };
 
-
- 
-
-exports.addBudgetItem = async (itemName, quantity, price, category) => {
-  //I added the call to the DB insert query inside the function that inserts data to Json file, 
-  //so it is called once the API fitched from frontend
-  //send userId hardcoded until we send it with the cookie
-  const result = insertToBudget(1,itemName, quantity, price, category,(err, res) => {
-    if (err) {
-      return err;
+exports.addBudgetItem = (userId, item, quantity, price, category, cb) => {
+  dbConnection.query(
+    'INSERT INTO budget (userId,item,quantity,price,category) VALUES ($1,$2,$3,$4,$5)',
+    [userId, item, quantity, price, category],
+    err => {
+      if (err) return cb(err);
+      return cb(null, 'New Item Added');
     }
-    return res;
-  });
- 
-  
-  return new Promise((resolve, reject) => {
-    const newItem = {
-      itemName,
-      quantity,
-      price,
-      category
-    };
-
-
-    const finalData = [...dataCopy, newItem];
-    fs.promises
-      .writeFile(BUDGET_PATH, JSON.stringify(finalData, null, 2))
-      .then(() => resolve('Item has been added'))
-      .catch(() => reject('Something went wrong'));
-  });
+  );
 };

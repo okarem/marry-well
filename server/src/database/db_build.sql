@@ -80,14 +80,14 @@ create table budget (
 	item VARCHAR(100) NOT NULL,
     quantity int NOT NULL,
 	price DOUBLE PRECISION,
-	category VARCHAR(100) DEFAULT 'other',
+	category INTEGER DEFAULT 0,
 	FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
-insert into budget (userId,item,quantity,price,category) values ('2','CocaCola',4,3.5,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','7UP',6,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','water',8,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','soda',11,125.5,'Drinks');
+insert into budget (userId,item,quantity,price,category) values ('2','CocaCola',4,3.5,1);
+insert into budget (userId,item,quantity,price,category) values ('2','7UP',6,100,2);
+insert into budget (userId,item,quantity,price,category) values ('2','water',8,100,3);
+insert into budget (userId,item,quantity,price,category) values ('2','soda',11,125.5,4);
 
 
 COMMIT;
