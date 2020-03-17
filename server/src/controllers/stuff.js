@@ -1,32 +1,35 @@
-const { getStuffData, addStuffItem,updateStuffItem, deleteStuffItem  } = require('../models/stuff');
- 
+const { getStuffData, addStuffItem, updateStuffItem, deleteStuffItem } = require('../models/stuff');
+
 exports.fetchStuffData = (req, res) => {
   getStuffData((err, result) => {
-    if (err) console.log(err) ;
+    if (err) console.log(err);
     res.json(result.rows);
   });
-};	
+};
 
 exports.addStuffDataItem = (req, res) => {
-  const { itemDesc, itemCategory } = req.body.newData;
-  addStuffItem(3,itemDesc, itemCategory,(err, result) => {
+  const { itemdesc, itemcategory } = req.body.newData;
+
+  addStuffItem(3, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
 };
 
 exports.updateStuffDataItem = (req, res) => {
-  const { itemDesc, itemCategory } = req.body.newData;
-  updetStuffItem(3,itemDesc, itemCategory,(err, result) => {
+  const { itemid, itemdesc, itemcategory } = req.body.newData;
+
+  updateStuffItem(itemid, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
 };
 
 exports.deleteStuffDataItem = (req, res) => {
-  const { stuffid } = req.body;
-  deleteStuffItem(stuffid, (err, result) => {
+  const { itemid } = req.body;
+
+  deleteStuffItem(itemid, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
-};	
+};
