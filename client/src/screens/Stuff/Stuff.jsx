@@ -28,7 +28,7 @@ const Stuff = () => {
       .then(finalRes => {
         setStuffDataState({ ...stuffDataState, data: finalRes });
       })
-      .catch(err => console.log(err));
+      .catch(err => err.message);
   }, []);
 
   if (stuffDataState.data === undefined) {
@@ -50,8 +50,8 @@ const Stuff = () => {
             header: {
               actions: ""
             },
-            toolbar: { searchTooltip: "بحث", searchPlaceholder: "بحث" },
-
+            toolbar: { searchTooltip: 'بحث', searchPlaceholder: ' بحث', 
+            exportTitle: 'csv تحميل ملف ' },
             body: {
               emptyDataSourceMessage: "لا يوجد معطيات",
               addTooltip: "اضافة",
@@ -90,8 +90,11 @@ const Stuff = () => {
               new Promise(resolve => {
                 axios
                   .post('http://localhost:5000/api/addStuffItem', { newData })
-                  .then(res => console.log(res))
-                  .catch(err => console.log(err));
+                  
+                  .then(() => {
+                    return;
+                  })
+                  .catch(err => err.message);
 
                 setTimeout(() => {
                   resolve();
