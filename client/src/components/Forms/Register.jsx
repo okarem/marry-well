@@ -47,7 +47,7 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
   let popupClass;
   activateRegisterForm === 0 ? (popupClass = 'popUpHidden') : (popupClass = 'popUpVisible');
   return (
-    <form className={popupClass}>
+    <section className={popupClass}>
       <form className="userForm" action="http://localhost:5000/createUser" method="POST" onSubmit={confirm}>
         <div className="userName">
           <label>اسم المستخدم</label>
@@ -68,7 +68,7 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
           <img src="./img/close.png" alt="closeIcon" />
         </div>
       </form>
-    </form>
+    </section>
   );
 };
 
