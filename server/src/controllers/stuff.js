@@ -17,7 +17,7 @@ exports.addStuffDataItem = (req, res) => {
 
 exports.updateStuffDataItem = (req, res) => {
   const { itemDesc, itemCategory } = req.body.newData;
-  updetStuffItem(3,itemDesc, itemCategory,(err, result) => {
+  updateStuffItem(3,itemDesc, itemCategory,(err, result) => {
     if (err) return err.message;
     res.json(result.rows);
   });

@@ -47,13 +47,14 @@ create table guests (
     FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
-insert into guests (userId, name, city,gender,status) values (1, 'Ron', 'Haifa','Male','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Dani', 'Haifa','Male','married');
-insert into guests (userId, name, city,gender,status) values (1, 'Lala', 'Haifa','Female','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Cia', 'TLV','Female','married');
-insert into guests (userId, name, city,gender,status) values (1, 'koka', 'TLV','Female','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','Male','engaged');
-insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','Male','married');
+insert into guests (userId, name, city,gender,status) values (1, 'Ron', 'Haifa','1','2');
+insert into guests (userId, name, city,gender,status) values (1, 'Dani', 'Haifa','1','1');
+insert into guests (userId, name, city,gender,status) values (1, 'Lala', 'Haifa','2','2');
+insert into guests (userId, name, city,gender,status) values (1, 'Cia', 'TLV','2','1');
+insert into guests (userId, name, city,gender,status) values (1, 'koka', 'TLV','2','3');
+insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','1','3');
+insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','1','1');
+
 
 DROP TABLE IF EXISTS budget;
 

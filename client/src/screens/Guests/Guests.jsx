@@ -1,151 +1,34 @@
 import React from "react";
-import "./Guests.css";
-import MaterialTable from "material-table";
-import ProgressBar from "../../components/progressBar/progressBar";
-const Guests = () => {
-  const [progressBarTitle] = React.useState("المعازيم");
-  const [progressBarImage] = React.useState("./img/guests.png");
-  const [guestsData, setGuestsData] = React.useState({
-    columns: [
-      {
-        title: "المجموعة",
-        field: "category",
-        lookup: { 1: "اعزب", 2: "متزوج", 3: "خاطب" }
-      },
-      { title: "الفئه ", field: "to", lookup: { 1: "ذكر", 2: "انثى" } },
-      { title: "البلد", field: "city" },
-      { title: "الاسم ", field: "Name" }
-    ],
-    data: [{ Name: "فاطمه", to: 2, category: 3, city: "يافه" }]
-  });
-
-  return (
-    <div>
-      <div>
-        <ProgressBar
-          progressBarTitle={progressBarTitle}
-          progressBarImage={progressBarImage}
-        />
-      </div>
-      <div className="table">
-        <MaterialTable
-          title="قائمة المعازيم"
-          localization={{
-            header: {
-              actions: ""
-            },
-            toolbar: { searchTooltip: "بحث", searchPlaceholder: "بحث" },
-
-            body: {
-              emptyDataSourceMessage: "لا يوجد معطيات",
-              addTooltip: "اضافة",
-              deleteTooltip: "حذف",
-              editTooltip: "تعديل",
-
-              editRow: {
-                saveTooltip: "تأكيد",
-                cancelTooltip: "الغاء",
-                deleteText: "هل انت متأكد من حذف هذا السطر؟"
-              }
-            }
-          }}
-          columns={guestsData.columns}
-          data={guestsData.data}
-          options={{
-            showTitle: false,
-            paging: false,
-            actionsColumnIndex: -1,
-            searchFieldAlignment: "right",
-            exportButton: true,
-            rowStyle: { backgroundColor: "#EEF0F2", color: "#353B3C" },
-            searchFieldStyle: { direction: "rtl" },
-            headerStyle: {
-              textAlign: "center",
-              backgroundColor: "#353B3C",
-              color: "#C6C7C4",
-              fontSize: "20px",
-              fontWeight: "bold"
-            },
-            cellStyle: { textAlign: "center", fontSize: "16px" },
-            padding: "dense"
-          }}
-          editable={{
-            onRowAdd: newData =>
-              new Promise(resolve => {
-                setTimeout(() => {
-                  resolve();
-                  setGuestsData(prevGuestsData => {
-                    const data = [...prevGuestsData.data];
-                    data.push(newData);
-                    return { ...prevGuestsData, data };
-                  });
-                }, 600);
-              }),
-            onRowUpdate: (newData, oldData) =>
-              new Promise(resolve => {
-                setTimeout(() => {
-                  resolve();
-                  if (oldData) {
-                    setGuestsData(prevGuestsData => {
-                      const data = [...prevGuestsData.data];
-                      data[data.indexOf(oldData)] = newData;
-                      return { ...prevGuestsData, data };
-                    });
-                  }
-                }, 600);
-              }),
-            onRowDelete: oldData =>
-              new Promise(resolve => {
-                setTimeout(() => {
-                  resolve();
-                  setGuestsData(prevGuestsData => {
-                    const data = [...prevGuestsData.data];
-                    data.splice(data.indexOf(oldData), 1);
-                    return { ...prevGuestsData, data };
-                  });
-                }, 600);
-              })
-          }}
-        />
-        <img className="cardImage" src="./img/card.png" alt="card"></img>
-      </div>
-    </div>
-  );
-};
-export default Guests;
-
-
-/*
-import "./Guests.css";
-import React from "react";
 import MaterialTable from "material-table";
 import axios from "axios";
 import ProgressBar from "../../components/progressBar/progressBar";
+import "./Guests.css";
 import CircularDeterminate from "../../components/Progress/Progress";
 
 const Guests = () => {
-  const [progressBarTitle] = React.useState("المعازيم");
-  const [progressBarImage] = React.useState("./img/guests.png");
+  const [progressBarTitle] = React.useState("الاغراض");
+  const [progressBarImage] = React.useState("./img/shopping-bags.png");
+
   const [guestsDataState, setGuestsDataState] = React.useState({
     columns: [
       {
         title: "المجموعة",
-        field: "category",
-        lookup: { 1: "اعزب", 2: "متزوج", 3: "خاطب" }
+        field: "status",
+        lookup: { 1: "عائلته", 2: "اعزب" , 3:"خاطب" }
       },
-      { title: "الفئه ", field: "to", lookup: { 1: "ذكر", 2: "انثى" } },
-      { title: "البلد", field: "city" },
-      { title: "الاسم ", field: "Name" }
+      { title: " الجنس", field: "gender",
+      lookup: { 1: "ذكر", 2: "انثى"  } },
+      { title: " البلد", field: "city" },
+      { title: " الاسم", field: "name" }
     ],
-    data: [{ Name: "فاطمه", to: 2, category: 3, city: "يافه" }]
   });
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/api/getguests")
+      .get("http://localhost:5000/api/getGuests")
       .then(res => res.data)
       .then(finalRes => {
-        setguestsDataState({ ...guestsDataState, data: finalRes });
+        setGuestsDataState({ ...guestsDataState, data: finalRes });
       })
       .catch(err => err.message);
   }, []);
@@ -162,15 +45,18 @@ const Guests = () => {
           progressBarImage={progressBarImage}
         />
       </div>
-      <div className="gueststable">
+      <div className="guestsftable">
         <MaterialTable
-          title="قائمة المعازيم"
+          title="تكاليف المستلزمات"
           localization={{
             header: {
               actions: ""
             },
-            toolbar: { searchTooltip: "بحث", searchPlaceholder: "بحث" },
-
+            toolbar: {
+              searchTooltip: "بحث",
+              searchPlaceholder: " بحث",
+              exportTitle: "csv تحميل ملف "
+            },
             body: {
               emptyDataSourceMessage: "لا يوجد معطيات",
               addTooltip: "اضافة",
@@ -184,8 +70,8 @@ const Guests = () => {
               }
             }
           }}
-          columns={guestsData.columns}
-          data={guestsData.data}
+          columns={guestsDataState.columns}
+          data={guestsDataState.data}
           options={{
             showTitle: false,
             paging: false,
@@ -201,7 +87,7 @@ const Guests = () => {
               fontSize: "20px",
               fontWeight: "bold"
             },
-            cellStyle: { textAlign: "center", fontSize: "16px" },
+            cellStyle: { textAlign: "center", fontSize: "18px" },
             padding: "dense"
           }}
           editable={{
@@ -210,7 +96,6 @@ const Guests = () => {
                 axios
                   .post("http://localhost:5000/api/addGuestsItem", { newData })
                   .then(res => alert(res.data))
-
                   .catch(err => err.message);
 
                 setTimeout(() => {
@@ -264,10 +149,3 @@ const Guests = () => {
   );
 };
 export default Guests;
-
-
-
-
-
-  
-*/

@@ -4,7 +4,7 @@ const router = express.Router();
 const user = require('./users');
 const { fetchStuffData, addStuffDataItem, updateStuffDataItem, deleteStuffDataItem } = require('./stuff');
 const { fetchBudgetData, addBudgetDataItem, updateBudgetDataItem, deleteBudgetDataItem } = require('./budget');
-const { addGuestsData } = require('./guests');
+const { fetchGuestsData,addGuestsDataItem , updateGuestsDataItem, deleteGuestsDataItem } = require('./guests');
 
 const createUser = require('./createUser');
 
@@ -18,8 +18,13 @@ router.post('/api/addStuffItem', addStuffDataItem);
 router.put('/api/updateStuffItem', updateStuffDataItem);
 router.delete('/api/deleteStuffItem', deleteStuffDataItem);
 
+router.get('/api/getGuests', fetchGuestsData);
+router.post('/api/addGuestsItem ', addGuestsDataItem );
+router.put('/api/updateGuestsItem', updateGuestsDataItem);
+router.delete('/api/deleteGuestsItem', deleteGuestsDataItem);
+
+
 router.post('/authenticate', user.authenticateUser);
 router.post('/createUser', createUser.addUser);
-router.post('/api/addGuests', addGuestsData);
 
 module.exports = router;
