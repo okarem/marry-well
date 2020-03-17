@@ -26,14 +26,14 @@ create table items (
     FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
-insert into items (userId, itemDesc, itemCategory) values (1, N'قهوة', N'مشروب');
-insert into items (userId, itemDesc, itemCategory) values (1, N'مياه معدنيه', N'مشروب');
-insert into items (userId, itemDesc, itemCategory) values (2, N'تول', N'زينة');
-insert into items (userId, itemDesc, itemCategory) values (2, 'cups', 'dinning');
-insert into items (userId, itemDesc, itemCategory) values (1, 'plates', 'dinning');
-insert into items (userId, itemDesc, itemCategory) values (3, 'water', 'drinks');
-insert into items (userId, itemDesc, itemCategory) values (3, 'soft drink', 'drinks');
-insert into items (userId, itemDesc, itemCategory) values (1, 'tissue', 'dinning');
+insert into items (userId, itemDesc, itemCategory) values (1, N'قهوة', 1);
+insert into items (userId, itemDesc, itemCategory) values (1, N'مياه معدنيه',2);
+insert into items (userId, itemDesc, itemCategory) values (2, N'تول', 1);
+insert into items (userId, itemDesc, itemCategory) values (2, 'cups', 2);
+insert into items (userId, itemDesc, itemCategory) values (1, 'plates', 1);
+insert into items (userId, itemDesc, itemCategory) values (3, 'water', 2);
+insert into items (userId, itemDesc, itemCategory) values (3, 'soft drink', 1);
+insert into items (userId, itemDesc, itemCategory) values (1, 'tissue', 2);
 
 DROP TABLE IF EXISTS guests;
 
