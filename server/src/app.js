@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const routes = require('./controllers');
 require('dotenv').config();
 
-console.log(require('dotenv').config());
+// console.log(require('dotenv').config());
 
 const app = express();
 
