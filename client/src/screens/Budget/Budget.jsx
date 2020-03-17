@@ -76,9 +76,7 @@ const Budget = () => {
               new Promise(resolve => {
                 axios
                   .post('http://localhost:5000/api/addBudgetItem', { newData })
-                  .then(() => {
-                    return;
-                  })
+                  .then(res => alert(res.data))
                   .catch(err => err.message);
 
                 setTimeout(() => {
@@ -92,6 +90,10 @@ const Budget = () => {
               }),
             onRowUpdate: (newData, oldData) =>
               new Promise(resolve => {
+                axios
+                  .put('http://localhost:5000/api/updateBudgetItem', { newData })
+                  .then(res => alert(res.data))
+                  .catch(err => err.message);
                 setTimeout(() => {
                   resolve();
                   if (oldData) {
@@ -105,6 +107,10 @@ const Budget = () => {
               }),
             onRowDelete: oldData =>
               new Promise(resolve => {
+                axios
+                  .delete('http://localhost:5000/api/deleteBudgetItem', { data: oldData })
+                  .then(res => alert(res.data))
+                  .catch(err => err.message);
                 setTimeout(() => {
                   resolve();
                   setBudgetDataState(prevBudgetData => {
