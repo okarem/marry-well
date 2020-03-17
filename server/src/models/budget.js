@@ -17,3 +17,21 @@ exports.addBudgetItem = (userId, item, quantity, price, category, cb) => {
     }
   );
 };
+
+exports.updateBudgetItem = (budgetid, item, quantity, price, category, cb) => {
+  dbConnection.query(
+    'UPDATE budget SET item = $1, quantity = $2, price = $3, category = $4 WHERE budgetid = $5 ',
+    [item, quantity, price, category, budgetid],
+    err => {
+      if (err) return cb(err);
+      return cb(null, 'Item Updated');
+    }
+  );
+};
+
+exports.deleteBudgetItem = (budgetid, cb) => {
+  dbConnection.query('DELETE FROM budget WHERE budgetid = $1', [budgetid], err => {
+    if (err) return cb(err);
+    return cb(null, 'Item has been deleted');
+  });
+};
