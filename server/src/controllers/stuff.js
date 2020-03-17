@@ -1,10 +1,9 @@
 const { getStuffData, addStuffItem } = require('../models/stuff');
 
 exports.fetchStuffData = (req, res) => {
-  let data = [];
   getStuffData((err, result) => {
-    if (err) return err;
-    res.json(result);
+    if (err) console.log(err) ;
+    res.json(result.rows);
   });
 };	
 
