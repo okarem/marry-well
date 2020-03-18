@@ -22,7 +22,8 @@ create table items (
 	itemId SERIAL PRIMARY KEY,
     userId INT NOT NULL,
 	itemDesc VARCHAR(200) NOT NULL,
-    itemCategory Varchar(50) NOT NULL DEFAULT 'other',
+    itemCategory INTEGER DEFAULT 0,
+
     FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
@@ -56,23 +57,7 @@ insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','
 insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','1','1');
 
 
-DROP TABLE IF EXISTS budget;
-
-create table budget (
-	budgetId SERIAL PRIMARY KEY,
-	userId INT NOT NULL,
-	item VARCHAR(100) NOT NULL,
-    quantity int NOT NULL,
-	price DOUBLE PRECISION,
-	category VARCHAR(100) DEFAULT 'other',
-	FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
-);
-
-insert into budget (userId,item,quantity,price,category) values ('2','CocaCola',4,3.5,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','7UP',6,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','water',8,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','soda',11,125.5,'Drinks');
-
+ 
 DROP TABLE IF EXISTS budget;
 
 create table budget (
