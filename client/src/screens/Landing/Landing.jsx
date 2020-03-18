@@ -1,8 +1,12 @@
 import React from 'react';
+import cookie from 'react-cookies';
+
 import Login from '../../components/Forms/Login';
 import Register from '../../components/Forms/Register';
 import './Landing.css';
+
 const Landing = () => {
+  const [a, b] = React.useState(null);
   const [activateLoginForm, setActivateLoginForm] = React.useState(0);
   const [activateRegisterForm, setActivateRegisterForm] = React.useState(0);
   const loginClickHandler = () => {
@@ -12,25 +16,28 @@ const Landing = () => {
     activateRegisterForm === 0 ? setActivateRegisterForm(1) : setActivateRegisterForm(0);
   };
 
+  React.useEffect(() => {
+    b({ cookies: cookie.loadAll() });
+    console.log(a);
+  }, []);
+
   return (
     <div>
       <header className="headerContainer">
         <a>
           <img className="couplesImage" src="./img/wedding.png" alt="Couples"></img>
         </a>
-
-        
       </header>
 
       <section className="content">
-        <div className='logSign'>
-      <button className="signInButton" onClick={loginClickHandler}>
-          الدخول
-        </button>
+        <div className="logSign">
+          <button className="signInButton" onClick={loginClickHandler}>
+            الدخول
+          </button>
 
-        <button className="registerButton" onClick={registerClickHandler}>
-          تسجيل الدخول
-        </button>
+          <button className="registerButton" onClick={registerClickHandler}>
+            تسجيل الدخول
+          </button>
         </div>
         <div className="weddingQuote">
           <h2> يقضي الكثير من الناس وقتا في التخطيط لحفلات الزفاف ، أكثر من الوقت الذي يقضونه في التخطيط للزواج. - زيغ زيغلر </h2>
@@ -65,6 +72,6 @@ const Landing = () => {
 
       <Register activateRegisterForm={activateRegisterForm} setActivateRegisterForm={setActivateRegisterForm} />
     </div>
-  );  
+  );
 };
 export default Landing;
