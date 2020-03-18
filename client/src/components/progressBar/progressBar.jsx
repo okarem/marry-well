@@ -10,9 +10,7 @@ const ProgressBar = ({ progressBarTitle, progressBarImage }) => {
       </div>
 
       <ul className="navigationBar">
-        <li className="navigationItems">
-          <a href="/calender">جدول المواعيد</a>
-        </li>
+        
         <li className="navigationItems">
           <a href="/guests">قائمة المعازيم</a>
         </li>
