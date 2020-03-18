@@ -22,18 +22,19 @@ create table items (
 	itemId SERIAL PRIMARY KEY,
     userId INT NOT NULL,
 	itemDesc VARCHAR(200) NOT NULL,
-    itemCategory Varchar(50) NOT NULL DEFAULT 'other',
+    itemCategory INTEGER DEFAULT 0,
+
     FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
-insert into items (userId, itemDesc, itemCategory) values (1, N'قهوة', N'مشروب');
-insert into items (userId, itemDesc, itemCategory) values (1, N'مياه معدنيه', N'مشروب');
-insert into items (userId, itemDesc, itemCategory) values (2, N'تول', N'زينة');
-insert into items (userId, itemDesc, itemCategory) values (2, 'cups', 'dinning');
-insert into items (userId, itemDesc, itemCategory) values (1, 'plates', 'dinning');
-insert into items (userId, itemDesc, itemCategory) values (3, 'water', 'drinks');
-insert into items (userId, itemDesc, itemCategory) values (3, 'soft drink', 'drinks');
-insert into items (userId, itemDesc, itemCategory) values (1, 'tissue', 'dinning');
+insert into items (userId, itemDesc, itemCategory) values (1, N'قهوة', 1);
+insert into items (userId, itemDesc, itemCategory) values (1, N'مياه معدنيه',2);
+insert into items (userId, itemDesc, itemCategory) values (2, N'تول', 1);
+insert into items (userId, itemDesc, itemCategory) values (2, 'cups', 2);
+insert into items (userId, itemDesc, itemCategory) values (1, 'plates', 1);
+insert into items (userId, itemDesc, itemCategory) values (3, 'water', 2);
+insert into items (userId, itemDesc, itemCategory) values (3, 'soft drink', 1);
+insert into items (userId, itemDesc, itemCategory) values (1, 'tissue', 2);
 
 DROP TABLE IF EXISTS guests;
 
@@ -47,31 +48,16 @@ create table guests (
     FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
 );
 
-insert into guests (userId, name, city,gender,status) values (1, 'Ron', 'Haifa','Male','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Dani', 'Haifa','Male','married');
-insert into guests (userId, name, city,gender,status) values (1, 'Lala', 'Haifa','Female','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Cia', 'TLV','Female','married');
-insert into guests (userId, name, city,gender,status) values (1, 'koka', 'TLV','Female','single');
-insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','Male','engaged');
-insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','Male','married');
+insert into guests (userId, name, city,gender,status) values (1, 'Ron', 'Haifa','1','2');
+insert into guests (userId, name, city,gender,status) values (1, 'Dani', 'Haifa','1','1');
+insert into guests (userId, name, city,gender,status) values (1, 'Lala', 'Haifa','2','2');
+insert into guests (userId, name, city,gender,status) values (1, 'Cia', 'TLV','2','1');
+insert into guests (userId, name, city,gender,status) values (1, 'koka', 'TLV','2','3');
+insert into guests (userId, name, city,gender,status) values (1, 'Boba', 'TLV','1','3');
+insert into guests (userId, name, city,gender,status) values (1, 'Sami', 'Nazareth','1','1');
 
-DROP TABLE IF EXISTS budget;
 
-create table budget (
-	budgetId SERIAL PRIMARY KEY,
-	userId INT NOT NULL,
-	item VARCHAR(100) NOT NULL,
-    quantity int NOT NULL,
-	price DOUBLE PRECISION,
-	category VARCHAR(100) DEFAULT 'other',
-	FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
-);
-
-insert into budget (userId,item,quantity,price,category) values ('2','CocaCola',4,3.5,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','7UP',6,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','water',8,100,'Drinks');
-insert into budget (userId,item,quantity,price,category) values ('2','soda',11,125.5,'Drinks');
-
+ 
 DROP TABLE IF EXISTS budget;
 
 create table budget (

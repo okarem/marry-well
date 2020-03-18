@@ -13,12 +13,11 @@ const Stuff = () => {
     columns: [
       {
         title: "المجموعة",
-        field: "category",
+        field: "itemcategory",
         lookup: { 1: "البيت", 2: "الحفله" }
       },
-      { title: "اسم الغرض", field: "itemName" }
+      { title: "اسم الغرض", field: "itemdesc" }
     ],
-    data: [{ itemName: "فناجين", category: 1 }]
   });
 
   React.useEffect(() => {
@@ -43,7 +42,7 @@ const Stuff = () => {
           progressBarImage={progressBarImage}
         />
       </div>
-      <div className="table">
+      <div className="stufftable">
         <MaterialTable
           title="تكاليف المستلزمات"
           localization={{
@@ -85,7 +84,7 @@ const Stuff = () => {
               fontSize: "20px",
               fontWeight: "bold"
             },
-            cellStyle: { textAlign: "center", fontSize: "16px" },
+            cellStyle: { textAlign: "center", fontSize: "18px" },
             padding: "dense"
           }}
           editable={{
@@ -93,9 +92,7 @@ const Stuff = () => {
               new Promise(resolve => {
                 axios
                   .post("http://localhost:5000/api/addStuffItem", { newData })
-
                   .then(res => alert(res.data))
-
                   .catch(err => err.message);
 
                 setTimeout(() => {

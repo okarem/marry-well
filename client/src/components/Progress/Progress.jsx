@@ -20,7 +20,6 @@ const CircularDeterminate = () => {
 
   React.useEffect(() => {
     function tick() {
-      // reset when reaching 100%
       setProgress(oldProgress => (oldProgress >= 100 ? 0 : oldProgress + 1));
     }
 

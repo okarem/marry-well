@@ -15,7 +15,7 @@ const Budget = () => {
         field: 'category',
         lookup: { 1: 'Drinks', 2: 'عاملين', 3: 'Food', 4: 'Accessories' }
       },
-      { title: 'السعر', field: 'price', type: 'currency' },
+      { title: 'السعر', field: 'price', type: 'currency', currencySetting: { currencyCode: 'ILS' } },
       { title: 'الكمية', field: 'quantity', type: 'numeric' },
       { title: 'اسم الغرض', field: 'item' }
     ]

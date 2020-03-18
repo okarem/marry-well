@@ -37,10 +37,11 @@ const Landing = () => {
         </div>
 
         <ul className="categoriesContainer">
+          
           <li className="categoryItem">
-            <a href="Calender">
-              <img className="categoryItemImage" src="./img/calendar.png" alt="calendar"></img>
-              <h3>جدول المواعيد</h3>
+            <a href="/stuff">
+              <img className="categoryItemImage" src="./img/shopping-bags.png" alt="items"></img>
+              <h3>الاغراض</h3>
             </a>
           </li>
 
@@ -48,13 +49,6 @@ const Landing = () => {
             <a href="/Guests ">
               <img className="categoryItemImage" src="./img/guests.png" alt="guests"></img>
               <h3> المعازيم</h3>
-            </a>
-          </li>
-
-          <li className="categoryItem">
-            <a href="/stuff">
-              <img className="categoryItemImage" src="./img/shopping-bags.png" alt="items"></img>
-              <h3>الاغراض</h3>
             </a>
           </li>
 
