@@ -27,7 +27,6 @@ exports.createUser = async (username, password) =>
 
     const newJson = [...temp, newUser];
 
-    // if the user exists then do not add him to our database
     if (checkIfUserExists(username)) {
       return reject(new Error('User already exists in our database'));
     }
