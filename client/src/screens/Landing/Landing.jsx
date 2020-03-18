@@ -18,7 +18,7 @@ const Landing = () => {
 
   React.useEffect(() => {
     b({ cookies: cookie.loadAll() });
-    console.log(a);
+    console.log(cookie.loadAll());
   }, []);
 
   return (
@@ -44,7 +44,6 @@ const Landing = () => {
         </div>
 
         <ul className="categoriesContainer">
-          
           <li className="categoryItem">
             <a href="/stuff">
               <img className="categoryItemImage" src="./img/shopping-bags.png" alt="items"></img>

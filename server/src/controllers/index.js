@@ -6,6 +6,7 @@ const { fetchStuffData, addStuffDataItem, updateStuffDataItem, deleteStuffDataIt
 const { fetchBudgetData, addBudgetDataItem, updateBudgetDataItem, deleteBudgetDataItem } = require('./budget');
 
 const { fetchGuestsData, addGuestsDataItem, updateGuestsDataItem, deleteGuestsDataItem } = require('./guests');
+const authCheck = require('./authCheck');
 
 router.get('/api/getBudget', fetchBudgetData);
 router.post('/api/addBudgetItem', addBudgetDataItem);

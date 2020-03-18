@@ -19,12 +19,10 @@ exports.authenticateUser = (req, res) => {
         .compare(password, users[0].hashedpassword)
         .then(hashCheck => {
           if (hashCheck) {
-            jwt.sign(JSON.stringify(userData), process.env.JWT_SECRET, (err, token) => {
+            jwt.sign(userData, process.env.JWT_SECRET, (err, token) => {
               if (err) console.log(err.message);
-              res.cookie('usr', token, {
-                httpOnly: true
-              });
-              res.redirect('http://localhost:3000/');
+              res.cookie('usr', token);
+              res.send({ status: 'success' });
             });
           } else {
             res.json('You have entered a wrong passwrod');
