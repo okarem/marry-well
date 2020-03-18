@@ -1,17 +1,35 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 const { getUserByName, createNewUser } = require('../models/users');
 
 exports.authenticateUser = (req, res) => {
   const { username, password } = req.body;
 
   getUserByName(username, (err, users) => {
-    if (err) res.json(err.message);
-    else if (user.length <= 0) {
+    if (err) console.log(err.message);
+    else if (users.length <= 0) {
       res.json('No User Was Found');
     } else {
+      const userData = {
+        userID: users[0].userid,
+        userName: users[0].name
+      };
       bcrypt
         .compare(password, users[0].hashedpassword)
-        .then(hashCheck => (hashCheck ? res.json(users) : res.json({ status: 'Error', message: 'The password you entered is incorrect !' })))
+        .then(hashCheck => {
+          if (hashCheck) {
+            jwt.sign(JSON.stringify(userData), process.env.JWT_SECRET, (err, token) => {
+              if (err) console.log(err.message);
+              res.cookie('usr', token, {
+                httpOnly: true
+              });
+              res.redirect('http://localhost:3000/');
+            });
+          } else {
+            res.json('You have entered a wrong passwrod');
+          }
+        })
         .catch(err => new Error(err.message));
     }
   });
@@ -21,7 +39,7 @@ exports.addUser = (req, res) => {
   const { username, password } = req.body;
 
   getUserByName(username, (err, users) => {
-    if (err) res.json(err.message);
+    if (err) console.log(err.message);
     else if (users.length > 0) {
       res.json('User Already Exists');
     } else {
