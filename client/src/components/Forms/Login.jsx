@@ -12,7 +12,7 @@ const Login = ({ activateLoginForm, setActivateLoginForm }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const { data } = await Axios.post(`${process.env.REACT_APP_API_URL}/authenticate`, { username: userName, password }, { withCredentials: true });
+      const { data } = await Axios.post(`${process.env.REACT_APP_API_URL}/authenticate`, { username: userName, password });
       setActivateLoginForm(0);
       setUserName('');
       setPassword('');
