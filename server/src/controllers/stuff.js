@@ -8,26 +8,28 @@ exports.fetchStuffData = (req, res) => {
 };
 
 exports.addStuffDataItem = (req, res) => {
-  const { itemDesc, itemCategory } = req.body.newData;
-  addStuffItem(3, itemDesc, itemCategory, (err, result) => {
+  const { itemdesc, itemcategory } = req.body.newData;
+
+  addStuffItem(3, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
 };
 
 exports.updateStuffDataItem = (req, res) => {
-  const { itemDesc, itemCategory } = req.body.newData;
+  const { itemid, itemdesc, itemcategory } = req.body.newData;
 
-  updateStuffItem(3, itemDesc, itemCategory, (err, result) => {
+  updateStuffItem(itemid, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
 };
 
 exports.deleteStuffDataItem = (req, res) => {
-  const { stuffid } = req.body;
-  deleteStuffItem(stuffid, (err, result) => {
+  const { itemid } = req.body;
+
+  deleteStuffItem(itemid, (err, result) => {
     if (err) return err.message;
-    res.json(result.rows);
+    res.json(result);
   });
 };
