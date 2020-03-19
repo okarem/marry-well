@@ -24,9 +24,9 @@ const Guests = () => {
 
   React.useEffect(async () => {
     try {
-      const isLoggedIn = await axios.get(`${process.env.REACT_APP_API_URL}/api/ifLoggedIn`);
-      if (isLoggedIn.data) {
-        const guests = await axios.get(`${process.env.REACT_APP_API_URL}/api/getGuests`);
+      const isLoggedIn = await axios.get(`${process.env.REACT_APP_API_URL}/ifLoggedIn`, { withCredentials: true });
+      if (isLoggedIn.data.status === 'success') {
+        const guests = await axios.get(`${process.env.REACT_APP_API_URL}/api/getGuests`, { withCredentials: true });
         setGuestsDataState({ ...guestsDataState, data: guests.data });
       } else {
         window.location = '/';
@@ -35,25 +35,6 @@ const Guests = () => {
       console.log(error);
     }
   }, []);
-  /*axios
-      .get('http://localhost:5000/api/ifLoggedIn')
-      .then(res => res.data)
-      .then(finalRes => {
-        setGuestsDataState({ ...guestsDataState, data: finalRes });
-        if (finalRes.isLoggedIn) {
-          axios
-            .get('http://localhost:5000/api/getGuests')
-            .then(res => res.data)
-            .then(finalRes => {
-              setGuestsDataState({ ...guestsDataState, data: finalRes });
-            })
-            .catch(err => err.message);
-        } else {
-          window.location = '/';
-        }
-      })
-      .catch(err => err.message);
-  }, []);*/
 
   if (guestsDataState.data === undefined) {
     return <CircularDeterminate />;
