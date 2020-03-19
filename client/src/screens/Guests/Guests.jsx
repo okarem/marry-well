@@ -6,8 +6,8 @@ import './Guests.css';
 import CircularDeterminate from '../../components/Progress/Progress';
 
 const Guests = () => {
-  const [progressBarTitle] = React.useState('الاغراض');
-  const [progressBarImage] = React.useState('./img/shopping-bags.png');
+  const [progressBarTitle] = React.useState('المعازيم');
+  const [progressBarImage] = React.useState('./img/guests.png');
 
   const [guestsDataState, setGuestsDataState] = React.useState({
     columns: [
