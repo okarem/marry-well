@@ -21,14 +21,27 @@ const Budget = () => {
     ]
   });
 
-  React.useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/getBudget')
-      .then(res => res.data)
-      .then(finalRes => {
-        setBudgetDataState({ ...budgetDataState, data: finalRes });
-      })
-      .catch(err => err.message);
+  // React.useEffect(() => {
+  //   axios
+  //     .get('http://localhost:5000/api/getBudget')
+  //     .then(res => res.data)
+  //     .then(finalRes => {
+  //       setBudgetDataState({ ...budgetDataState, data: finalRes });
+  //     })
+  //     .catch(err => err.message);
+  // }, []);
+  React.useEffect(async () => {
+    try {
+      const isLoggedIn = await axios.get(`${process.env.REACT_APP_API_URL}/ifLoggedIn`, { withCredentials: true });
+      if (isLoggedIn.data.status === 'success') {
+        const budget = await axios.get(`${process.env.REACT_APP_API_URL}/api/getStuff`, { withCredentials: true });
+        setBudgetDataState({ ...budgetDataState, data: budget.data });
+      } else {
+        window.location = '/';
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   if (budgetDataState.data === undefined) {

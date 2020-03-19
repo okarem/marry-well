@@ -1,7 +1,7 @@
 const { getStuffData, addStuffItem, updateStuffItem, deleteStuffItem } = require('../models/stuff');
 
 exports.fetchStuffData = (req, res) => {
-  getStuffData((err, result) => {
+  getStuffData(res.locals.user.userID, (err, result) => {
     if (err) console.log(err);
     res.json(result.rows);
   });
@@ -10,7 +10,7 @@ exports.fetchStuffData = (req, res) => {
 exports.addStuffDataItem = (req, res) => {
   const { itemdesc, itemcategory } = req.body.newData;
 
-  addStuffItem(3, itemdesc, itemcategory, (err, result) => {
+  addStuffItem(res.locals.user.userID, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
     res.json(result);
   });

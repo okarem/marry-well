@@ -1,33 +1,46 @@
-import React from "react";
-import MaterialTable from "material-table";
-import axios from "axios";
-import ProgressBar from "../../components/progressBar/progressBar";
-import "./Stuff.css";
-import CircularDeterminate from "../../components/Progress/Progress";
+import React from 'react';
+import MaterialTable from 'material-table';
+import axios from 'axios';
+import ProgressBar from '../../components/progressBar/progressBar';
+import './Stuff.css';
+import CircularDeterminate from '../../components/Progress/Progress';
 
 const Stuff = () => {
-  const [progressBarTitle] = React.useState("الاغراض");
-  const [progressBarImage] = React.useState("./img/shopping-bags.png");
+  const [progressBarTitle] = React.useState('الاغراض');
+  const [progressBarImage] = React.useState('./img/shopping-bags.png');
 
   const [stuffDataState, setStuffDataState] = React.useState({
     columns: [
       {
-        title: "المجموعة",
-        field: "itemcategory",
-        lookup: { 1: "البيت", 2: "الحفله" }
+        title: 'المجموعة',
+        field: 'itemcategory',
+        lookup: { 1: 'البيت', 2: 'الحفله' }
       },
-      { title: "اسم الغرض", field: "itemdesc" }
-    ],
+      { title: 'اسم الغرض', field: 'itemdesc' }
+    ]
   });
 
-  React.useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/getStuff")
-      .then(res => res.data)
-      .then(finalRes => {
-        setStuffDataState({ ...stuffDataState, data: finalRes });
-      })
-      .catch(err => err.message);
+  // React.useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/api/getStuff")
+  //     .then(res => res.data)
+  //     .then(finalRes => {
+  //       setStuffDataState({ ...stuffDataState, data: finalRes });
+  //     })
+  //     .catch(err => err.message);
+  // }, []);
+  React.useEffect(async () => {
+    try {
+      const isLoggedIn = await axios.get(`${process.env.REACT_APP_API_URL}/ifLoggedIn`, { withCredentials: true });
+      if (isLoggedIn.data.status === 'success') {
+        const stuff = await axios.get(`${process.env.REACT_APP_API_URL}/api/getStuff`, { withCredentials: true });
+        setStuffDataState({ ...stuffDataState, data: stuff.data });
+      } else {
+        window.location = '/';
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   if (stuffDataState.data === undefined) {
@@ -37,33 +50,30 @@ const Stuff = () => {
   return (
     <div>
       <div>
-        <ProgressBar
-          progressBarTitle={progressBarTitle}
-          progressBarImage={progressBarImage}
-        />
+        <ProgressBar progressBarTitle={progressBarTitle} progressBarImage={progressBarImage} />
       </div>
       <div className="stufftable">
         <MaterialTable
           title="تكاليف المستلزمات"
           localization={{
             header: {
-              actions: ""
+              actions: ''
             },
             toolbar: {
-              searchTooltip: "بحث",
-              searchPlaceholder: " بحث",
-              exportTitle: "csv تحميل ملف "
+              searchTooltip: 'بحث',
+              searchPlaceholder: ' بحث',
+              exportTitle: 'csv تحميل ملف '
             },
             body: {
-              emptyDataSourceMessage: "لا يوجد معطيات",
-              addTooltip: "اضافة",
-              deleteTooltip: "حذف",
-              editTooltip: "تعديل",
+              emptyDataSourceMessage: 'لا يوجد معطيات',
+              addTooltip: 'اضافة',
+              deleteTooltip: 'حذف',
+              editTooltip: 'تعديل',
 
               editRow: {
-                saveTooltip: "تأكيد",
-                cancelTooltip: "الغاء",
-                deleteText: "هل انت متأكد من حذف هذا السطر؟"
+                saveTooltip: 'تأكيد',
+                cancelTooltip: 'الغاء',
+                deleteText: 'هل انت متأكد من حذف هذا السطر؟'
               }
             }
           }}
@@ -73,25 +83,25 @@ const Stuff = () => {
             showTitle: false,
             paging: false,
             actionsColumnIndex: -1,
-            searchFieldAlignment: "right",
+            searchFieldAlignment: 'right',
             exportButton: true,
-            rowStyle: { backgroundColor: "#EEF0F2", color: "#353B3C" },
-            searchFieldStyle: { direction: "rtl" },
+            rowStyle: { backgroundColor: '#EEF0F2', color: '#353B3C' },
+            searchFieldStyle: { direction: 'rtl' },
             headerStyle: {
-              textAlign: "center",
-              backgroundColor: "#353B3C",
-              color: "#C6C7C4",
-              fontSize: "20px",
-              fontWeight: "bold"
+              textAlign: 'center',
+              backgroundColor: '#353B3C',
+              color: '#C6C7C4',
+              fontSize: '20px',
+              fontWeight: 'bold'
             },
-            cellStyle: { textAlign: "center", fontSize: "18px" },
-            padding: "dense"
+            cellStyle: { textAlign: 'center', fontSize: '18px' },
+            padding: 'dense'
           }}
           editable={{
             onRowAdd: newData =>
               new Promise(resolve => {
                 axios
-                  .post("http://localhost:5000/api/addStuffItem", { newData })
+                  .post('http://localhost:5000/api/addStuffItem', { newData })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -107,7 +117,7 @@ const Stuff = () => {
             onRowUpdate: (newData, oldData) =>
               new Promise(resolve => {
                 axios
-                  .put("http://localhost:5000/api/updateStuffItem", { newData })
+                  .put('http://localhost:5000/api/updateStuffItem', { newData })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -125,7 +135,7 @@ const Stuff = () => {
             onRowDelete: oldData =>
               new Promise(resolve => {
                 axios
-                  .delete("http://localhost:5000/api/deleteStuffItem", {
+                  .delete('http://localhost:5000/api/deleteStuffItem', {
                     data: oldData
                   })
                   .then(res => alert(res.data))
