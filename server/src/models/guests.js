@@ -1,7 +1,7 @@
 const dbConnection = require('../database/db_connection');
 
-exports.getGuestsData = cb => {
-  dbConnection.query('SELECT * FROM guests', cb);
+exports.getGuestsData = (id, cb) => {
+  dbConnection.query('SELECT * FROM guests where userid = $1', [id], cb);
 };
 exports.addGuestsItem = (userId, name, city, gender, status, cb) => {
   {
