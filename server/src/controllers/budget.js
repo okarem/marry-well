@@ -1,7 +1,7 @@
 const { getBudgetData, addBudgetItem, updateBudgetItem, deleteBudgetItem } = require('../models/budget');
 
 exports.fetchBudgetData = (req, res) => {
-  getBudgetData((err, result) => {
+  getBudgetData(res.locals.user.userID, (err, result) => {
     if (err) return err.message;
     res.json(result);
   });
@@ -10,7 +10,7 @@ exports.fetchBudgetData = (req, res) => {
 exports.addBudgetDataItem = (req, res) => {
   const { item, quantity, price, category } = req.body.newData;
 
-  addBudgetItem(3, item, quantity, price, category, (err, result) => {
+  addBudgetItem(res.locals.user.userID, item, quantity, price, category, (err, result) => {
     if (err) return err.message;
     res.json(result);
   });

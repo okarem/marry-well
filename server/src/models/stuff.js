@@ -1,7 +1,7 @@
 const dbConnection = require('../database/db_connection');
 
-exports.getStuffData = cb => {
-  dbConnection.query('SELECT * FROM items', cb);
+exports.getStuffData = (id, cb) => {
+  dbConnection.query('SELECT * FROM items where userid = $1', [id], cb);
 };
 
 exports.addStuffItem = (userid, itemdesc, itemcategory, cb) => {
