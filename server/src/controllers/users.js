@@ -53,3 +53,16 @@ exports.addUser = (req, res) => {
     }
   });
 };
+
+exports.checkLogin = (req, res) => {
+  if (req.cookies.usr) {
+    jwt.verify(req.cookies.usr, process.env.JWT_SECRET, function(err, decoded) {
+      if (err) {
+        return res.status(403).send({ status: 'error', message: err });
+      }
+      return res.status(200).send({ status: 'success' });
+    });
+  } else {
+    res.status(403).send({ status: 'error' });
+  }
+};

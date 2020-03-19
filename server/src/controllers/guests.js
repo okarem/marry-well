@@ -1,7 +1,8 @@
 const { getGuestsData, addGuestsItem, updateGuestsItem, deleteGuestsItem } = require('../models/guests');
 
 exports.fetchGuestsData = (req, res) => {
-  getGuestsData((err, result) => {
+  //console.log('inside guests.js', res.locals);
+  getGuestsData(res.locals.user.userID, (err, result) => {
     if (err) console.log(err);
     res.json(result.rows);
   });
@@ -23,7 +24,6 @@ exports.updateGuestsDataItem = (req, res) => {
   });
 };
 
-
 exports.deleteGuestsDataItem = (req, res) => {
   const { guestsid } = req.body;
   deleteGuestsItem(guestsid, (err, result) => {
@@ -31,4 +31,3 @@ exports.deleteGuestsDataItem = (req, res) => {
     res.json(result.rows);
   });
 };
-
