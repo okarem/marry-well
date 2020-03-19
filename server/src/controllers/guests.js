@@ -10,7 +10,7 @@ exports.fetchGuestsData = (req, res) => {
 
 exports.addGuestsDataItem = (req, res) => {
   const { name, city, gender, status } = req.body.newData;
-  addGuestsItem(3, name, city, gender, status, (err, result) => {
+  addGuestsItem(res.locals.user.userID, name, city, gender, status, (err, result) => {
     if (err) return err.message;
     res.json(result.rows);
   });
@@ -18,7 +18,7 @@ exports.addGuestsDataItem = (req, res) => {
 
 exports.updateGuestsDataItem = (req, res) => {
   const { name, city, gender, status } = req.body.newData;
-  updateGuestsItem(3, name, city, gender, status, (err, result) => {
+  updateGuestsItem(guestsid, name, city, gender, status, (err, result) => {
     if (err) return err.message;
     res.json(result.rows);
   });

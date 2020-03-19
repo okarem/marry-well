@@ -8,7 +8,7 @@ const { fetchBudgetData, addBudgetDataItem, updateBudgetDataItem, deleteBudgetDa
 const { fetchGuestsData, addGuestsDataItem, updateGuestsDataItem, deleteGuestsDataItem } = require('./guests');
 const authCheck = require('./authCheck');
 
-router.get('/api/getBudget', fetchBudgetData);
+router.get('/api/getBudget', authCheck, fetchBudgetData);
 router.post('/api/addBudgetItem', addBudgetDataItem);
 router.put('/api/updateBudgetItem', updateBudgetDataItem);
 router.delete('/api/deleteBudgetItem', deleteBudgetDataItem);

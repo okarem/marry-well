@@ -1,7 +1,7 @@
 const dbConnection = require('../database/db_connection');
 
-exports.getBudgetData = cb => {
-  dbConnection.query('SELECT * FROM budget', (err, result) => {
+exports.getBudgetData = (id,cb) => {
+  dbConnection.query('SELECT * FROM budget where userid = $1', [id], (err, result) => {
     if (err) return cb(err);
     return cb(null, result.rows);
   });

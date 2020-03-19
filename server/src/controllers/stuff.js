@@ -10,7 +10,7 @@ exports.fetchStuffData = (req, res) => {
 exports.addStuffDataItem = (req, res) => {
   const { itemdesc, itemcategory } = req.body.newData;
 
-  addStuffItem(3, itemdesc, itemcategory, (err, result) => {
+  addStuffItem(res.locals.user.userID, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
     res.json(result);
   });
