@@ -49,6 +49,9 @@ const Register = ({ activateRegisterForm, setActivateRegisterForm }) => {
   return (
     <section className={popupClass}>
       <form className="userForm" action="http://localhost:5000/createUser" method="POST" onSubmit={confirm}>
+        <div className="icon-logIn">
+          <img src="./img/iconLogIn.png" alt="closeIcon" />
+        </div>
         <div className="userName">
           <label>اسم المستخدم</label>
           <input type="text" name="username" onChange={userNameListener}></input>
