@@ -29,7 +29,7 @@ const Budget = () => {
         setBudgetDataState({ ...budgetDataState, data: finalRes });
       })
       .catch(err => err.message);
-  }, []);
+  });
 
   if (budgetDataState.data === undefined) {
     return <CircularDeterminate />;

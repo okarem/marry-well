@@ -13,7 +13,7 @@ router.post('/api/addBudgetItem', addBudgetDataItem);
 router.put('/api/updateBudgetItem', updateBudgetDataItem);
 router.delete('/api/deleteBudgetItem', deleteBudgetDataItem);
 
-router.get('/api/getStuff', fetchStuffData);
+router.get('/api/getStuff', authCheck, fetchStuffData);
 router.post('/api/addStuffItem', addStuffDataItem);
 router.put('/api/updateStuffItem', updateStuffDataItem);
 router.delete('/api/deleteStuffItem', deleteStuffDataItem);

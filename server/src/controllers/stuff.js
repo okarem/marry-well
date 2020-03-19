@@ -1,7 +1,7 @@
 const { getStuffData, addStuffItem, updateStuffItem, deleteStuffItem } = require('../models/stuff');
 
 exports.fetchStuffData = (req, res) => {
-  getStuffData((err, result) => {
+  getStuffData(res.locals.user.userID, (err, result) => {
     if (err) console.log(err);
     res.json(result.rows);
   });
