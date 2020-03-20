@@ -9,7 +9,6 @@ exports.fetchBudgetData = (req, res) => {
 
 exports.addBudgetDataItem = (req, res) => {
   const { item, quantity, price, category } = req.body.newData;
-
   addBudgetItem(res.locals.user.userID, item, quantity, price, category, (err, result) => {
     if (err) return err.message;
     res.json(result);

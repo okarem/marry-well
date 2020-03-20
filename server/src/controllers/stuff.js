@@ -9,7 +9,6 @@ exports.fetchStuffData = (req, res) => {
 
 exports.addStuffDataItem = (req, res) => {
   const { itemdesc, itemcategory } = req.body.newData;
-
   addStuffItem(res.locals.user.userID, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
     res.json(result);
@@ -18,7 +17,6 @@ exports.addStuffDataItem = (req, res) => {
 
 exports.updateStuffDataItem = (req, res) => {
   const { itemid, itemdesc, itemcategory } = req.body.newData;
-
   updateStuffItem(itemid, itemdesc, itemcategory, (err, result) => {
     if (err) return err.message;
     res.json(result);
@@ -26,8 +24,7 @@ exports.updateStuffDataItem = (req, res) => {
 };
 
 exports.deleteStuffDataItem = (req, res) => {
-  const { itemid } = req.body;
-
+  const itemid = req.body.itemid;
   deleteStuffItem(itemid, (err, result) => {
     if (err) return err.message;
     res.json(result);
