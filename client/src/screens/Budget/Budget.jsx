@@ -21,20 +21,11 @@ const Budget = () => {
     ]
   });
 
-  // React.useEffect(() => {
-  //   axios
-  //     .get('http://localhost:5000/api/getBudget')
-  //     .then(res => res.data)
-  //     .then(finalRes => {
-  //       setBudgetDataState({ ...budgetDataState, data: finalRes });
-  //     })
-  //     .catch(err => err.message);
-  // }, []);
   React.useEffect(async () => {
     try {
       const isLoggedIn = await axios.get(`${process.env.REACT_APP_API_URL}/ifLoggedIn`, { withCredentials: true });
       if (isLoggedIn.data.status === 'success') {
-        const budget = await axios.get(`${process.env.REACT_APP_API_URL}/api/getStuff`, { withCredentials: true });
+        const budget = await axios.get(`${process.env.REACT_APP_API_URL}/api/getBudget`, { withCredentials: true });
         setBudgetDataState({ ...budgetDataState, data: budget.data });
       } else {
         window.location = '/';
@@ -88,7 +79,7 @@ const Budget = () => {
             onRowAdd: newData =>
               new Promise(resolve => {
                 axios
-                  .post('http://localhost:5000/api/addBudgetItem', { newData })
+                  .post('http://localhost:5000/api/addBudgetItem', { newData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 

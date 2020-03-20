@@ -101,7 +101,7 @@ const Stuff = () => {
             onRowAdd: newData =>
               new Promise(resolve => {
                 axios
-                  .post('http://localhost:5000/api/addStuffItem', { newData })
+                  .post('http://localhost:5000/api/addStuffItem', { newData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -117,7 +117,7 @@ const Stuff = () => {
             onRowUpdate: (newData, oldData) =>
               new Promise(resolve => {
                 axios
-                  .put('http://localhost:5000/api/updateStuffItem', { newData })
+                  .put('http://localhost:5000/api/updateStuffItem', { newData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -135,9 +135,13 @@ const Stuff = () => {
             onRowDelete: oldData =>
               new Promise(resolve => {
                 axios
-                  .delete('http://localhost:5000/api/deleteStuffItem', {
-                    data: oldData
-                  })
+                  .delete(
+                    'http://localhost:5000/api/deleteStuffItem',
+                    {
+                      data: oldData
+                    },
+                    { withCredentials: true }
+                  )
                   .then(res => alert(res.data))
                   .catch(err => err.message);
                 setTimeout(() => {

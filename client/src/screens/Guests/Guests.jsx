@@ -94,7 +94,7 @@ const Guests = () => {
             onRowAdd: newData =>
               new Promise(resolve => {
                 axios
-                  .post('http://localhost:5000/api/addGuestsItem', { newData })
+                  .post('http://localhost:5000/api/addGuestsItem', { newData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -110,7 +110,7 @@ const Guests = () => {
             onRowUpdate: (newData, oldData) =>
               new Promise(resolve => {
                 axios
-                  .put('http://localhost:5000/api/updateGuestsItem', { newData })
+                  .put('http://localhost:5000/api/updateGuestsItem', { newData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
 
@@ -128,9 +128,7 @@ const Guests = () => {
             onRowDelete: oldData =>
               new Promise(resolve => {
                 axios
-                  .delete('http://localhost:5000/api/deleteGuestsItem', {
-                    data: oldData
-                  })
+                  .delete('http://localhost:5000/api/deleteGuestsItem', { data: oldData }, { withCredentials: true })
                   .then(res => alert(res.data))
                   .catch(err => err.message);
                 setTimeout(() => {
